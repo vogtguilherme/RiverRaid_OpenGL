@@ -6,6 +6,7 @@ private:
 	float posicaoX, posicaoY;
 	float sentidoX, sentidoY;
 	float tamanho;
+
 public:
 	Jato();
 

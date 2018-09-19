@@ -30,6 +30,7 @@ public:
 
 	//Getters e Setters
 	void setInimigoAtirando(bool inimigo);
+	
 	bool getInimigoAtirando();
 
 	void setPlayerAtirando(bool player);

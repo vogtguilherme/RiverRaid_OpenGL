@@ -11,7 +11,9 @@ Jato::Jato() {
 
 //Getters e Setters
 
-void Jato::Desenha() {
+void Jato::Desenha() 
+{
+
 }
 
 float Jato::getTamanho()

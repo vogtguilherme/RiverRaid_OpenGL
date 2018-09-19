@@ -1,6 +1,7 @@
 #pragma once
 #include "GL\glew.h"
 #include "GL\freeglut.h"
+
 #include "Tiro.h"
 
 #include <iostream>
@@ -9,7 +10,7 @@
 
 using namespace std;
 
-class TelaJogo
+class Scene
 {
 private:
 	string textoPontos;
@@ -18,7 +19,7 @@ private:
 	string combustivel;
 public:
 
-	TelaJogo();
+	Scene();
 
 	void Texto(const char *text, int length, int x, int y);
 	void DesenhaTexto(Tiro &tiroPonto);

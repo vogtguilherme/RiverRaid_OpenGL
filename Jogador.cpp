@@ -1,9 +1,6 @@
 #pragma once
 #include "Jogador.h"
 
-
-
-
 Jogador::Jogador()
 {
 	setPosicaoX(0);
