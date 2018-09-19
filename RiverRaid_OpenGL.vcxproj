@@ -113,13 +113,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Jato.cpp" />
+    <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Tiro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Jato.h" />
+    <ClInclude Include="Jogador.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Tiro.h" />
   </ItemGroup>

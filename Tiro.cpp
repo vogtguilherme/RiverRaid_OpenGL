@@ -1,5 +1,7 @@
 #pragma once
 #include "Tiro.h"
+#include "Inimigo.h"
+#include "Jogador.h"
 
 
 using namespace std;

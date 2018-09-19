@@ -3,6 +3,8 @@
 #include "GL\freeglut.h"
 
 #include "Jato.h"
+#include "Inimigo.h"
+#include "Jogador.h"
 
 class Tiro
 {
