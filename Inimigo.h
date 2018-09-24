@@ -28,8 +28,8 @@ public:
 	void MovimentacaoAcao();
 	void Spawn(bool &colidiu);
 
-	//get and set pro atirando
-	void setAtirando(bool &_atirando);
-	bool getAtirando();
+	////get and set pro atirando
+	//void setAtirando(bool &_atirando);
+	//bool getAtirando();
 };
 #endif // ! INIMIGO_H_INCLUDED

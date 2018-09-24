@@ -2,19 +2,39 @@
 #include"Inimigo.h"
 //vector<Object*> Scene::objetos = vector<Object*>();
 
+Inimigo inimigo;
+
+
+void Desenhos(void)
+{
+
+	inimigo.Desenha();
+
+	glutSwapBuffers();
+	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
+	glutPostRedisplay();
+}
+
 Scene::Scene(int argc, char **argv, string title, int width, int height)
 {
 
 	glutInit(&argc, argv);
 	// Indica que deve ser usado um unico buffer para armazenamento da imagem e representacao de cores RGB
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(width, height);
-	glutInitWindowPosition(0, 0);
+	//glutInitWindowSize(width, height);
+	//glutInitWindowPosition(0, 0);
+	glutInitWindowPosition(250, 50);
+	glutInitWindowSize(800, 600);
+	/*glutInitWindowSize(300, 300);
+	glutInitWindowPosition(100, 0);*/
+
 	// Cria uma janela com o titulo especificado
 	glutCreateWindow(title.c_str());
 	// Especifica para a OpenGL que funcao deve ser chamada para geracao da imagem
 	glutDisplayFunc(update);
 	glutIdleFunc(update);
+
+	glutDisplayFunc(Desenhos);
 
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutKeyboardFunc(GerenciaTeclado);
@@ -27,7 +47,6 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutMainLoop();
 
 }
-
 
 // Função callback chamada quando o tamanho da janela é alterado
 void Scene::AlteraTamanhoJanela(GLsizei w, GLsizei h)
@@ -92,13 +111,16 @@ void Scene::update(void)
 	{
 		objetos[i]->draw();
 	}*/
-
+	inimigo.Desenha();
 	glutSwapBuffers();
+	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
+	glutPostRedisplay();
 }
 // Inicializa aspectos do rendering
 void Scene::start()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
+	
 }
 
 

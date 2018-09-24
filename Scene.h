@@ -28,7 +28,7 @@ public:
 	//static vector<Object*> objetos;
 	Scene(int argc, char **argv, string title, int width = 600, int height = 600);
 	~Scene();
-	Inimigo desenhar;
+	
 
 };
 

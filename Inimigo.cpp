@@ -10,7 +10,7 @@ Inimigo::Inimigo()
 	setPosicaoY(4.5);
 	setSentidoX(0);
 	setSentidoY(0);
-	setTamanho(0.3);
+	setTamanho(0.1);
 	timer = 0;
 	reset = false;
 }
@@ -18,14 +18,14 @@ Inimigo::Inimigo()
 bool Inimigo::reset = false;
 
 
-//get and set pro atirando
-bool Inimigo::getAtirando() {
-	return atirando;
-}
-
-void Inimigo::setAtirando(bool &_atirando) {
-	atirando = _atirando;
-}
+////get and set pro atirando
+//bool Inimigo::getAtirando() {
+//	return atirando;
+//}
+//
+//void Inimigo::setAtirando(bool &_atirando) {
+//	atirando = _atirando;
+//}
 
 
 void Inimigo::MovimentacaoAcao()
@@ -36,38 +36,39 @@ void Inimigo::MovimentacaoAcao()
 
 	if (auxMovimentacao == 0)
 	{
-		deslocamento = 0.0002;
+		deslocamento = 0.002;
 		setPosicaoX(deslocamento);
 	}
 
 	else
 	{
-		deslocamento = -0.0002;
+		deslocamento = -0.002;
 		setPosicaoX(deslocamento);
 	}
-	
-	if (getTamanho() >= 0.3 && getTamanho() <= 0.35 && timer > 1900.0)
-	{
-		//teste para inimigo atirar...
-		srand(time(NULL));
-		auxRand = rand() % 2;
+	 setPosicaoY(-0.0005);
 
-		if (auxRand == 0 && atirando == false)
-		{
-			atirando = true;
-		}
+	//if (getTamanho() >= 0.3 && getTamanho() <= 0.35 && timer > 1900.0)
+	//{
+	//	//teste para inimigo atirar...
+	//	srand(time(NULL));
+	//	auxRand = rand() % 2;
 
-		else
-		{
-			timer = 0;
-			atirando = false;
-		}
+	//	if (auxRand == 0 && atirando == false)
+	//	{
+	//		atirando = true;
+	//	}
 
-	}
-	else
-	{
-		timer++;
-	}
+	//	else
+	//	{
+	//		timer = 0;
+	//		atirando = false;
+	//	}
+
+	//}
+	//else
+	//{
+	//	timer++;
+	//}
 }
 
 void Inimigo::Spawn(bool &colidiu)
@@ -118,7 +119,7 @@ void Inimigo::Spawn(bool &colidiu)
 
 void Inimigo::Desenha()
 {
-	if (getPosicaoY() < -5.4)
+	if (getPosicaoY() < 0.0)
 	{
 		limite_mapa = true;
 	}
@@ -132,7 +133,6 @@ void Inimigo::Desenha()
 
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
-
 	glVertex2f((-getTamanho() + getPosicaoX() + 0.1f), (getTamanho() + getPosicaoY() + 0.3f)); //Superior Esquerdo
 	glVertex2f((getTamanho() + getPosicaoX() - 0.1f), (getTamanho() + getPosicaoY() + 0.3f));  //Superior Direito
 	glVertex2f((getTamanho() + getPosicaoX() - 0.1f), (-getTamanho() + getPosicaoY() + 0.3f));	//Inferior Direito
