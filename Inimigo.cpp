@@ -45,8 +45,7 @@ void Inimigo::MovimentacaoAcao()
 		deslocamento = -0.0002;
 		setPosicaoX(deslocamento);
 	}
-	setPosicaoY(-0.0003);
-
+	
 	if (getTamanho() >= 0.3 && getTamanho() <= 0.35 && timer > 1900.0)
 	{
 		//teste para inimigo atirar...
@@ -133,10 +132,15 @@ void Inimigo::Desenha()
 
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
-	glVertex2f(-getTamanho() + getPosicaoX(), -getTamanho() + getPosicaoY()); //Inferior Esquerdo
-	glVertex2f(-getTamanho() + getPosicaoX(), getTamanho() + getPosicaoY()); //Superior Esquerdo
-	glVertex2f(getTamanho() + getPosicaoX(), getTamanho() + getPosicaoY());  //Superior Direito
-	glVertex2f(getTamanho() + getPosicaoX(), -getTamanho() + getPosicaoY());  //Inferior Direito
+
+	glVertex2f((-getTamanho() + getPosicaoX() + 0.1f), (getTamanho() + getPosicaoY() + 0.3f)); //Superior Esquerdo
+	glVertex2f((getTamanho() + getPosicaoX() - 0.1f), (getTamanho() + getPosicaoY() + 0.3f));  //Superior Direito
+	glVertex2f((getTamanho() + getPosicaoX() - 0.1f), (-getTamanho() + getPosicaoY() + 0.3f));	//Inferior Direito
+	glVertex2f((-getTamanho() + getPosicaoX() + 0.1f), (-getTamanho() + getPosicaoY() + 0.3f)); //inferioresquerdo
+	glVertex2f(-getTamanho() + getPosicaoX(), getTamanho() + getPosicaoY());	//Superior Esquerdo
+	glVertex2f(getTamanho() + getPosicaoX(), getTamanho() + getPosicaoY());	//Superior Direito
+	glVertex2f((getTamanho() + getPosicaoX() - 0.1f), -getTamanho() + getPosicaoY());	//Inferior Direito
+	glVertex2f((-getTamanho() + getPosicaoX() + 0.1f), -getTamanho() + getPosicaoY()); //inferioresquerdo
 	glEnd();
 
 }

@@ -3,7 +3,7 @@
 #include "GL\freeglut.h"
 
 #include "Tiro.h"
-
+#include"Inimigo.h"
 #include <iostream>
 #include <string>
 #include <sstream> 
@@ -28,6 +28,7 @@ public:
 	//static vector<Object*> objetos;
 	Scene(int argc, char **argv, string title, int width = 600, int height = 600);
 	~Scene();
+	Inimigo desenhar;
 
 };
 

@@ -1,5 +1,5 @@
 #include "Scene.h"
-
+#include"Inimigo.h"
 //vector<Object*> Scene::objetos = vector<Object*>();
 
 Scene::Scene(int argc, char **argv, string title, int width, int height)
@@ -20,9 +20,9 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutKeyboardFunc(GerenciaTeclado);
 	glutMouseFunc(GerenciaMouse);
 	glutSpecialFunc(TeclasEspeciais);
-
+	
 	start();
-
+	
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
 
