@@ -45,7 +45,7 @@ void Inimigo::MovimentacaoAcao()
 		deslocamento = -0.0002;
 		setPosicaoX(deslocamento);
 	}
-	setPosicaoY(-0.0003);
+	//setPosicaoY(-0.0003);
 
 	if (getTamanho() >= 0.3 && getTamanho() <= 0.35 && timer > 1900.0)
 	{
@@ -92,8 +92,8 @@ void Inimigo::Spawn(bool &colidiu)
 			auxRand = (rand() % 10 + 1) - 11;
 		}
 
-		posicaoRand = (float)auxRand / 10;
-
+		//posicaoRand = (float)auxRand / 10;
+		posicaoRand = 0.1f;
 
 		setTamanho(0.0);
 		setPosicaoInicialX(posicaoRand);
