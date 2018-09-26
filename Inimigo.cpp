@@ -140,39 +140,39 @@ void Inimigo::Desenha()
 	//glEnd();
 
 
-	////desenhoelecoptero
-	//glColor3f(1.0f, 0.0f, 0.0f);
-	//glBegin(GL_LINE_LOOP);
-	//glVertex2f(0.2f, 0.2f);//v1
+	//desenhoelecoptero
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(0.2f, 0.2f);//v1
 
-	//glVertex2f(0.3f, 0.2f);//v2
+	glVertex2f(0.3f, 0.2f);//v2
 
-	//glVertex2f(0.3f, 0.3f);//v3
+	glVertex2f(0.3f, 0.3f);//v3
 
-	//glVertex2f(0.4f, 0.3f);//v4
+	glVertex2f(0.4f, 0.3f);//v4
 
-	//glVertex2f(0.4f, 0.1f);//v5
+	glVertex2f(0.4f, 0.1f);//v5
 
-	//glVertex2f(0.5f, 0.1f);//v6
+	glVertex2f(0.5f, 0.1f);//v6
 
-	//glVertex2f(0.5f, 0.6f);//v7
+	glVertex2f(0.5f, 0.6f);//v7
 
-	//glVertex2f(0.4f, 0.6f);//v8
+	glVertex2f(0.4f, 0.6f);//v8
 
-	//glVertex2f(0.4f, 0.4f);//v9
+	glVertex2f(0.4f, 0.4f);//v9
 
-	//glVertex2f(0.3f, 0.4f);//v10
+	glVertex2f(0.3f, 0.4f);//v10
 
-	//glVertex2f(0.3f, 0.8f);//v11
+	glVertex2f(0.3f, 0.8f);//v11
 
-	//glVertex2f(0.2f, 0.7f);//v12
+	glVertex2f(0.2f, 0.7f);//v12
 
-	//glVertex2f(0.2f, 0.5f);//v13
+	glVertex2f(0.2f, 0.5f);//v13
 
-	//glVertex2f(0.1f, 0.4f);//v14
+	glVertex2f(0.1f, 0.4f);//v14
 
-	//glVertex2f(0.1f, 0.3f);//v15
-	//glEnd();
+	glVertex2f(0.1f, 0.3f);//v15
+	glEnd();
 
 
 	////desenhobarco
