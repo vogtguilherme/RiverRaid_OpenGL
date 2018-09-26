@@ -15,10 +15,10 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutInit(&argc, argv);
 	// Indica que deve ser usado um unico buffer para armazenamento da imagem e representacao de cores RGB
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	//glutInitWindowSize(width, height);
+	glutInitWindowSize(width, height);
 	//glutInitWindowPosition(0, 0);
 	glutInitWindowPosition(250, 50);
-	glutInitWindowSize(800, 600);
+	//glutInitWindowSize(800, 600);
 	/*glutInitWindowSize(300, 300);
 	glutInitWindowPosition(100, 0);*/
 
