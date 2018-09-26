@@ -21,7 +21,6 @@ void Barco::criabarco(float _px1, float _px2, float _px3, float _px4, float _px5
 
 void Barco::desenhabarco()
 {
-
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
 	glVertex2f(px1 + 0.1, py1 + 0.1);
