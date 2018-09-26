@@ -1,15 +1,9 @@
 #include "Scene.h"
-#include"Inimigo.h"
+
 //vector<Object*> Scene::objetos = vector<Object*>();
-
-Inimigo inimigo;
-
 
 void Desenhos(void)
 {
-
-	inimigo.Desenha();
-
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -111,7 +105,7 @@ void Scene::update(void)
 	{
 		objetos[i]->draw();
 	}*/
-	inimigo.Desenha();
+	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();

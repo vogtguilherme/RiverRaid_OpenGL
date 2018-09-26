@@ -2,8 +2,6 @@
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 
-#include "Tiro.h"
-#include"Inimigo.h"
 #include <iostream>
 #include <string>
 #include <sstream> 
