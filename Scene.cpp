@@ -1,14 +1,29 @@
 #include "Scene.h"
 #include"Barco.h"
+#include <time.h>
+#include <windows.h>
+#include <gl\glut.h>
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+
+
 //vector<Object*> Scene::objetos = vector<Object*>();
 
 Barco barquinho;
-
+//Criação de variáveis
+//Velocidade das linhas
+float speedl1 = 0.1f;
 void Desenhos(void)
 {
+	// Limpa a janela com a cor especificada como cor de fundo
+	glClear(GL_COLOR_BUFFER_BIT);
 
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0, 800, 0, 600);
+	
 	barquinho.desenhabarco();
-
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -20,12 +35,9 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutInit(&argc, argv);
 	// Indica que deve ser usado um unico buffer para armazenamento da imagem e representacao de cores RGB
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	//glutInitWindowSize(width, height);
-	//glutInitWindowPosition(0, 0);
+	
 	glutInitWindowPosition(250, 50);
 	glutInitWindowSize(800, 600);
-	/*glutInitWindowSize(300, 300);
-	glutInitWindowPosition(100, 0);*/
 
 	// Cria uma janela com o titulo especificado
 	glutCreateWindow(title.c_str());
@@ -33,15 +45,16 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutDisplayFunc(update);
 	glutIdleFunc(update);
 
-	glutDisplayFunc(Desenhos);
 
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutKeyboardFunc(GerenciaTeclado);
 	glutMouseFunc(GerenciaMouse);
-	glutSpecialFunc(TeclasEspeciais);
+	
+	//glutSpecialFunc(TeclasEspeciais);
+	glutDisplayFunc(Desenhos);
 	
 	start();
-	
+	glutTimerFunc(50, Animacao, 1);
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
 
@@ -90,16 +103,38 @@ void Scene::GerenciaMouse(int button, int state, int x, int y)
 }
 // Função callback chamada para gerenciar eventos do teclado
 // para teclas especiais, tais como F1, PgDn e Home
-void Scene::TeclasEspeciais(int key, int x, int y)
+void Teclas(int tecla, int x, int y )
 {
-	if (key == GLUT_KEY_UP) {
-
-	}
-	if (key == GLUT_KEY_DOWN) {
-
+	if (tecla == GLUT_KEY_DOWN)
+	{
+		/*sapo.sx1 += 40;
+		sapo.sx2 += 40;
+		sapo.sx3 += 40;
+		sapo.sx4 += 40;*/
+		
+			barquinho.px1 += 600.0f;
+			barquinho.px2 += 600.0f;
+			barquinho.px3  += 600.0f;
+			barquinho.px4  += 600.0f;
+			barquinho.py1  += 600.0f;
+			barquinho.py2  += 600.0f;
+			barquinho.py3  += 600.0f;
+			barquinho.py4  += 600.0f;
+		
+		
 	}
 	glutPostRedisplay();
 }
+//void Scene::TeclasEspeciais(int tecla, int x, int y)
+//{
+//	if (tecla == GLUT_KEY_RIGHT) {
+//		
+//	}
+//	if (tecla == GLUT_KEY_LEFT) {
+//		
+//	}
+//	glutPostRedisplay();
+//}
 void Scene::update(void)
 {
 	glMatrixMode(GL_MODELVIEW);
@@ -111,6 +146,9 @@ void Scene::update(void)
 		objetos[i]->draw();
 	}*/
 	barquinho.desenhabarco();
+	glutSpecialFunc(Teclas);
+	
+
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -119,12 +157,43 @@ void Scene::update(void)
 void Scene::start()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
-	
+	barquinho.criabarco(500, 650, 650, 500, 110, 110, 70, 70);
+	glutPostRedisplay();
 }
 
+void Animacao(int valor)
+{
+	speedl1 += 0.08f;
+
+	barquinho.px1 += speedl1;
+	barquinho.px2 += speedl1;
+	barquinho.px3 += speedl1;
+	barquinho.px4 += speedl1;
+	barquinho.py1 += speedl1;
+	barquinho.py2 += speedl1;
+	barquinho.py3 += speedl1;
+	barquinho.py4 += speedl1;
+	if (barquinho.px1 < -75)
+	{
+		barquinho.px1 = 800;
+		barquinho.px2 = 875;
+		barquinho.px3 = 875;
+		barquinho.px4 = 800;
+	}
+	//if (barquinho.px1 > 800)
+	//{
+	//	barquinho.px1 = -150;
+	//	barquinho.px2 = 0;
+	//	barquinho.px3 = 0;
+	//	barquinho.px4 = -150;
+	//}
+	glutPostRedisplay();
+	glutTimerFunc(1, Animacao, 1);
+}
 
 Scene::~Scene()
 {
+	glutTimerFunc(50, Animacao, 1);
 }
 
 /*Scene::Scene()

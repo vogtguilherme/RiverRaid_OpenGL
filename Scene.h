@@ -17,7 +17,7 @@ class Scene
 	string title;
 	void start();
 	static void update(void);
-	static void TeclasEspeciais(int key, int x, int y);
+	//static void TeclasEspeciais(int key, int x, int y);
 	static void GerenciaMouse(int button, int state, int x, int y);
 	static void GerenciaTeclado(unsigned char key, int x, int y);
 	static void AlteraTamanhoJanela(GLsizei w, GLsizei h);
