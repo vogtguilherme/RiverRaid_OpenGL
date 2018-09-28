@@ -19,7 +19,8 @@ Combustivel gasolina;
 Aviao aviao;
 //Criação de variáveis
 //Velocidade das linhas
-float speedl1 = 0.1f;
+float speedl1 = 0.0001f;
+float speedY = 0.0001f;
 void Desenhos(void)
 {
 	// Limpa a janela com a cor especificada como cor de fundo
@@ -27,10 +28,10 @@ void Desenhos(void)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	//gluOrtho2D(0, 800, 0, 600);
-	//copter.Desenhahelecoptyero();
+	gluOrtho2D(-5, 5, -5, 5);
+	copter.Desenhahelecoptyero();
 	//aviao.DesenhaAviao();
-	gasolina.desenhacobustivel();
+	//gasolina.desenhacobustivel();
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -154,9 +155,15 @@ void Scene::update(void)
 	}*/
 	
 	glutSpecialFunc(Teclas);
-	gasolina.desenhacobustivel();
-	//copter.Desenhahelecoptyero();
-	 //aviao.DesenhaAviao();
+	//gasolina.desenhacobustivel();
+	if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
+	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;
+
+	if (copter.paraLeft == true) copter.MoveHelecoptero(-speedl1 * 20, -speedY);
+	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
+
+	copter.Desenhahelecoptyero();
+	//aviao.DesenhaAviao();
 	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
@@ -167,6 +174,7 @@ void Scene::start()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
 	barquinho.criabarco(500, 650, 650, 500, 110, 110, 70, 70);
+	//copter.Criahelecoptero();
 	glutPostRedisplay();
 }
 
