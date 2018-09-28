@@ -17,8 +17,7 @@ Barco barquinho;
 Helicoptero copter;
 Combustivel gasolina;
 Aviao aviao;
-//Criação de variáveis
-//Velocidade das linhas
+
 float speedl1 = 0.0001f;
 float speedY = 0.0001f;
 void Desenhos(void)
@@ -29,9 +28,9 @@ void Desenhos(void)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(-5, 5, -5, 5);
-	copter.Desenhahelecoptyero();
-	//aviao.DesenhaAviao();
-	//gasolina.desenhacobustivel();
+	//copter.Desenhahelecoptyero();
+	gasolina.desenhacobustivel();
+	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -115,10 +114,6 @@ void Teclas(int tecla, int x, int y )
 {
 	if (tecla == GLUT_KEY_DOWN)
 	{
-		/*sapo.sx1 += 40;
-		sapo.sx2 += 40;
-		sapo.sx3 += 40;
-		sapo.sx4 += 40;*/
 		
 			barquinho.px1 += 600.0f;
 			barquinho.px2 += 600.0f;
@@ -155,14 +150,24 @@ void Scene::update(void)
 	}*/
 	
 	glutSpecialFunc(Teclas);
-	//gasolina.desenhacobustivel();
+
+
+	//movimentacoa coptero
 	if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
 	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;
 
 	if (copter.paraLeft == true) copter.MoveHelecoptero(-speedl1 * 20, -speedY);
 	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
 
-	copter.Desenhahelecoptyero();
+	//movimentaoca combustivel
+
+	if (gasolina.extremodowm <= -5 && gasolina.paradowun == true)gasolina.paradowun=false;
+	else if (gasolina.extremodowm >= 5 && gasolina.paradowun == false)gasolina.paradowun = true;
+
+	if (gasolina.paradowun==true)gasolina.movecombustivel(-speedl1 * 20, -speedY);
+	else if (gasolina.paradowun == false)gasolina.movecombustivel(speedl1 * 20, -speedY);
+	//copter.Desenhahelecoptyero();
+	gasolina.desenhacobustivel();
 	//aviao.DesenhaAviao();
 	
 	glutSwapBuffers();
