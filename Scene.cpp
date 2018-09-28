@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include"Barco.h"
+#include "Combustivel.h"
+#include"Helicoptero.h"
 #include <time.h>
 #include <windows.h>
 #include <gl\glut.h>
@@ -11,6 +13,8 @@
 //vector<Object*> Scene::objetos = vector<Object*>();
 
 Barco barquinho;
+Helicoptero copter;
+Combustivel gasolina;
 //Criação de variáveis
 //Velocidade das linhas
 float speedl1 = 0.1f;
@@ -21,9 +25,9 @@ void Desenhos(void)
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(0, 800, 0, 600);
-	
-	barquinho.desenhabarco();
+	//gluOrtho2D(0, 800, 0, 600);
+	copter.Desenhahelecoptyero();
+
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -54,7 +58,7 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutDisplayFunc(Desenhos);
 	
 	start();
-	glutTimerFunc(50, Animacao, 1);
+	//glutTimerFunc(50, Animacao, 1);
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
 
@@ -145,10 +149,12 @@ void Scene::update(void)
 	{
 		objetos[i]->draw();
 	}*/
-	barquinho.desenhabarco();
-	glutSpecialFunc(Teclas);
 	
+	glutSpecialFunc(Teclas);
+	//gasolina.desenhacobustivel();
+	copter.Desenhahelecoptyero();
 
+	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -193,7 +199,7 @@ void Animacao(int valor)
 
 Scene::~Scene()
 {
-	glutTimerFunc(50, Animacao, 1);
+	
 }
 
 /*Scene::Scene()

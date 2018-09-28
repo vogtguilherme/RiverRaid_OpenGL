@@ -113,11 +113,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aviao.h" />
     <ClInclude Include="Barco.h" />
+    <ClInclude Include="Combustivel.h" />
+    <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Aviao.cpp" />
     <ClCompile Include="Barco.cpp" />
+    <ClCompile Include="Combustivel.cpp" />
+    <ClCompile Include="Helicoptero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
