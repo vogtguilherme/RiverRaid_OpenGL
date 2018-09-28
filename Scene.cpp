@@ -29,7 +29,8 @@ void Desenhos(void)
 	glLoadIdentity();
 	//gluOrtho2D(0, 800, 0, 600);
 	//copter.Desenhahelecoptyero();
-	aviao.DesenhaAviao();
+	//aviao.DesenhaAviao();
+	gasolina.desenhacobustivel();
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -153,9 +154,9 @@ void Scene::update(void)
 	}*/
 	
 	glutSpecialFunc(Teclas);
-	//gasolina.desenhacobustivel();
+	gasolina.desenhacobustivel();
 	//copter.Desenhahelecoptyero();
-	aviao.DesenhaAviao();
+	 //aviao.DesenhaAviao();
 	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis

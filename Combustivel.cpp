@@ -26,11 +26,11 @@ void Combustivel::desenhacobustivel()
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(px1 = 0.1f, py1 = 0.4f);
-	glVertex2f(px2 = 0.1f, py2 = 0.6f);
-	glVertex2f(px3 = 0.2f, py3 = 0.7f);
-	glVertex2f(px4 = 0.3f, py4 = 0.6f);
-	glVertex2f(px5 = 0.3f, py5 = 0.4f);
-	glVertex2f(px6 = 0.2f, py6 = 0.3f);
+	glVertex2f(px2 = 0.1f, py2 = 0.8f);
+	glVertex2f(px3 = 0.2f, py3 = 0.9f);
+	glVertex2f(px4 = 0.4f, py4 = 0.9f);
+	glVertex2f(px5 = 0.5f, py5 = 0.8f);
+	glVertex2f(px6 = 0.5f, py6 = 0.4f);
 	glEnd();
 }
 
