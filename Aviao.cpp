@@ -47,26 +47,26 @@ void Aviao::CriaAviao(float _Px1, float _Px2, float _Px3, float _Px4, float _Px5
 
 void Aviao::DesenhaAviao()
 {
-	glColor3f(1.0, 1.0, 0.0);
+	glColor3f(1.0, 0.0, 1.0);
 	glBegin(GL_LINE_LOOP);
 	glVertex2f(Px1 = 0.2f, Py1 = 0.6f);
 	glVertex2f(Px2 = 0.2f, Py2 = 0.8f);
-	glVertex2f(Px3 = 0.5f, Py1 = 0.9f);
-	glVertex2f(Px4 = 0.5f, Py1 = 0.10f);
-	glVertex2f(Px5 = 0.7f, Py1 = 0.10f);
-	glVertex2f(Px6 = 0.7f, Py1 = 0.9f);
-	glVertex2f(Px7 = 0.9f, Py1 = 0.8f);
-	glVertex2f(Px8 = 0.9f, Py1 = 0.6f);
-	glVertex2f(Px9 = 0.7f, Py1 = 0.7f);
-	glVertex2f(Px10 = 0.7f, Py1 = 0.5f);
-	glVertex2f(Px11 = 0.9f, Py1 = 0.4f);
-	glVertex2f(Px12 = 0.9f, Py1 = 0.3f);
-	glVertex2f(Px13 = 0.7f, Py1 = 0.4f);
-	glVertex2f(Px14 = 0.5f, Py1 = 0.4f);
-	glVertex2f(Px15 = 0.3f, Py1 = 0.3f);
-	glVertex2f(Px16 = 0.3f, Py1 = 0.4f);
-	glVertex2f(Px17 = 0.5f, Py1 = 0.5f);
-	glVertex2f(Px18 = 0.5f, Py1 = 0.7f);
+	glVertex2f(Px3 = 0.5f, Py3 = 0.9f);
+	glVertex2f(Px4 = 0.5f, Py4 = 1.0f);
+	glVertex2f(Px5 = 0.7f, Py5 = 1.0f);
+	glVertex2f(Px6 = 0.7f, Py6 = 0.9f);
+	glVertex2f(Px7 = 0.9f, Py7 = 0.8f);
+	glVertex2f(Px8 = 0.9f, Py8 = 0.6f);
+	glVertex2f(Px9 = 0.7f, Py9 = 0.7f);
+	glVertex2f(Px10 = 0.7f, Py10 = 0.5f);
+	glVertex2f(Px11 = 0.9f, Py11 = 0.4f);
+	glVertex2f(Px12 = 0.9f, Py12 = 0.3f);
+	glVertex2f(Px13 = 0.7f, Py13 = 0.4f);
+	glVertex2f(Px14 = 0.5f, Py14 = 0.4f);
+	glVertex2f(Px15 = 0.3f, Py15 = 0.3f);
+	glVertex2f(Px16 = 0.3f, Py16 = 0.4f);
+	glVertex2f(Px17 = 0.5f, Py17 = 0.5f);
+	glVertex2f(Px18 = 0.5f, Py18 = 0.7f);
 	glEnd();
 
 }

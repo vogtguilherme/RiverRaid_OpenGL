@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include"Barco.h"
+#include "Aviao.h"
 #include "Combustivel.h"
 #include"Helicoptero.h"
 #include <time.h>
@@ -15,6 +16,7 @@
 Barco barquinho;
 Helicoptero copter;
 Combustivel gasolina;
+Aviao aviao;
 //Criação de variáveis
 //Velocidade das linhas
 float speedl1 = 0.1f;
@@ -26,8 +28,8 @@ void Desenhos(void)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	//gluOrtho2D(0, 800, 0, 600);
-	copter.Desenhahelecoptyero();
-
+	//copter.Desenhahelecoptyero();
+	aviao.DesenhaAviao();
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -152,8 +154,8 @@ void Scene::update(void)
 	
 	glutSpecialFunc(Teclas);
 	//gasolina.desenhacobustivel();
-	copter.Desenhahelecoptyero();
-
+	//copter.Desenhahelecoptyero();
+	aviao.DesenhaAviao();
 	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
