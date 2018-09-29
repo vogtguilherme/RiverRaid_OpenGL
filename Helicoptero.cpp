@@ -41,7 +41,7 @@ void Helicoptero::Desenhahelecoptyero()
 	{
 		//helice
 		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_QUADS);
 		glVertex2f(Px5 + 0.1f, Py5 + 0.5f);
 		glVertex2f(Px6 + 0.1f, Py6 + 0.7f);
 		glVertex2f(Px7 + 1.0f, Py7 + 0.7f);
@@ -49,7 +49,7 @@ void Helicoptero::Desenhahelecoptyero()
 		glEnd();
 
 		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_POLYGON);
 		glVertex2f(Px1 + 0.3f, Py1 + 0.1f);
 		glVertex2f(Px2 + 0.3f, Py2 + 0.3f);
 		glVertex2f(Px3 + 0.5f, Py3 + 0.3f);
@@ -67,7 +67,7 @@ void Helicoptero::Desenhahelecoptyero()
 	{		
 		//helice
 		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_QUADS);
 		glVertex2f(Px5 - 0.1f, Py5 + 0.5f);
 		glVertex2f(Px6 - 0.1f, Py6 + 0.7f);
 		glVertex2f(Px7 - 1.0f, Py7 + 0.7f);
@@ -75,7 +75,7 @@ void Helicoptero::Desenhahelecoptyero()
 		glEnd();
 
 		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_POLYGON);
 		glVertex2f(Px1 - 0.3f, Py1 + 0.1f);
 		glVertex2f(Px2 - 0.3f, Py2 + 0.3f);
 		glVertex2f(Px3 - 0.5f, Py3 + 0.3f);
