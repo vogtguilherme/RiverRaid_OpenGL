@@ -114,6 +114,7 @@
     <ClInclude Include="Barco.h" />
     <ClInclude Include="Combustivel.h" />
     <ClInclude Include="Helicoptero.h" />
+    <ClInclude Include="Paredes.h" />
     <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,7 @@
     <ClCompile Include="Combustivel.cpp" />
     <ClCompile Include="Helicoptero.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Paredes.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>

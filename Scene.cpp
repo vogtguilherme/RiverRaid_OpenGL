@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include"Barco.h"
 #include "Aviao.h"
+#include"Paredes.h"
 #include "Combustivel.h"
 #include"Helicoptero.h"
 #include <time.h>
@@ -114,15 +115,17 @@ void Teclas(int tecla, int x, int y )
 {
 	if (tecla == GLUT_KEY_DOWN)
 	{
+
+		//nao serve 
 		
-			barquinho.px1 += 600.0f;
+			/*barquinho.px1 += 600.0f;
 			barquinho.px2 += 600.0f;
 			barquinho.px3  += 600.0f;
 			barquinho.px4  += 600.0f;
 			barquinho.py1  += 600.0f;
 			barquinho.py2  += 600.0f;
 			barquinho.py3  += 600.0f;
-			barquinho.py4  += 600.0f;
+			barquinho.py4  += 600.0f;*/
 		
 		
 	}
