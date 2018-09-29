@@ -1,7 +1,6 @@
 #include "Scene.h"
 #include"Barco.h"
 #include "Aviao.h"
-#include"Paredes.h"
 #include "Combustivel.h"
 #include"Helicoptero.h"
 #include <time.h>
@@ -116,15 +115,13 @@ void Teclas(int tecla, int x, int y )
 {
 	if (tecla == GLUT_KEY_DOWN)
 	{
-<<<<<<< HEAD
 
 		//nao serve 
-=======
 		/*sapo.sx1 += 40;
 		sapo.sx2 += 40;
 		sapo.sx3 += 40;
 		sapo.sx4 += 40;*/
->>>>>>> parent of 3fd7416... mais um
+
 		
 			/*barquinho.px1 += 600.0f;
 			barquinho.px2 += 600.0f;
