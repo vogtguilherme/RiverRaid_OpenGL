@@ -3,72 +3,111 @@
 #include "GL\freeglut.h"
 
 
-void Aviao::CriaAviao(float _Px1, float _Px2, float _Px3, float _Px4, float _Px5, float _Px6, float _Px7, float _Px8, float _Px9, float _Px10, float _Px11, float _Px12, float _Px13, float _Px14, float _Px15, float _Px16, float _Px17, float _Px18, float _Py1, float _Py2, float _Py3, float _Py4, float _Py5, float _Py6, float _Py7, float _Py8, float _Py9, float _Py10, float _Py11, float _Py12, float _Py13, float _Py14, float _Py15, float _Py16, float _Py17, float _Py18)
+void Aviao::CriaAviao(float _x, float _y)
 {
-	Px1 = _Px1;
-	Px2 = _Px2;
-	Px3 = _Px3;
-	Px4 = _Px4;
-	Px5 = _Px5;
-	Px6 = _Px6;
-	Px7 = _Px7;
-	Px8 = _Px8;
-	Px9 = _Px9;
-	Px10 = _Px10;
-	Px11 = _Px11;
-	Px12 = _Px12;
-	Px13 = _Px13;
-	Px14 = _Px14;
-	Px15 = _Px15;
-	Px16 = _Px16;
-	Px17 = _Px17;
-	Px18 = _Px18;
+	//bico
+	Px1 = 0.1f + _x;
+	Px2 = 0.2f + _x;
+	Px3 = 0.2f + _x;
+	//bico
+	Py1 = 0.3f + _y;
+	Py2 = 0.4f + _y;
+	Py3 = 0.2f + _y;
 
-	Py1 = _Py1;
-	Py2 = _Py2;
-	Py3 = _Py3;
-	Py4 = _Py4;
-	Py5 = _Py5;
-	Py6 = _Py6;
-	Py7 = _Py7;
-	Py8 = _Py8;
-	Py9 = _Py9;
-	Py10 = _Py10;
-	Py11 = _Py11;
-	Py12 = _Py12;
-	Py13 = _Py13;
-	Py14 = _Py14;
-	Py15 = _Py15;
-	Py16 = _Py16;
-	Py17 = _Py17;
-	Py18 = _Py18;
+	//asa esquerda
+	Px4 = 0.3f + _x;
+	Px5 = 0.5f + _x;
+	Px6 = 0.6f + _x;
+	Px7 = 0.4f + _x;
+	//asa esquerda
+	Py4 = 0.2f + _y;
+	Py5 = 0.2f + _y;
+	Py6 = 0.1f + _y;
+	Py7 = 0.1f + _y;
 
+
+	//asa direita
+	Px8 = 0.3f + _x;
+	Px9 = 0.4f + _x;
+	Px10 = 0.6f + _x;
+	Px11 = 0.5f + _x;
+	//asa direita
+	Py8 = 0.4f + _y;
+	Py9 = 0.5f + _y;
+	Py10 = 0.5f + _y;
+	Py11 = 0.4f + _y;
+
+	//corpo
+	Px12 = 0.2f + _x;
+	Px13 = 0.2f + _x;
+	Px14 = 0.7f + _x;
+	Px15 = 0.7f + _x;
+	//corpo
+	Py12 = 0.2f + _y;
+	Py13 = 0.4f + _y;
+	Py14 = 0.4f + _y;
+	Py15 = 0.2f + _y;
+
+	//calda
+	Px16 = 0.7f + _x;
+	Px17 = 0.7f + _x;
+	Px18 = 0.8f + _x;
+	Px19 = 0.9f + _x;
+	Px20 = 0.9 + _x;
+	//calda
+	Py16 = 0.2f + _y;
+	Py17 = 0.4f + _y;
+	Py18 = 0.5f + _y;
+	Py19 = 0.5f + _y;
+	Py20 = 0.5f + _y;
 }
 
 void Aviao::DesenhaAviao()
 {
-	glColor3f(1.0, 0.0, 1.0);
-	glBegin(GL_LINE_LOOP);
-	glVertex2f(Px1 = 0.2f, Py1 = 0.6f);
-	glVertex2f(Px2 = 0.2f, Py2 = 0.8f);
-	glVertex2f(Px3 = 0.5f, Py3 = 0.9f);
-	glVertex2f(Px4 = 0.5f, Py4 = 1.0f);
-	glVertex2f(Px5 = 0.7f, Py5 = 1.0f);
-	glVertex2f(Px6 = 0.7f, Py6 = 0.9f);
-	glVertex2f(Px7 = 0.9f, Py7 = 0.8f);
-	glVertex2f(Px8 = 0.9f, Py8 = 0.6f);
-	glVertex2f(Px9 = 0.7f, Py9 = 0.7f);
-	glVertex2f(Px10 = 0.7f, Py10 = 0.5f);
-	glVertex2f(Px11 = 0.9f, Py11 = 0.4f);
-	glVertex2f(Px12 = 0.9f, Py12 = 0.3f);
-	glVertex2f(Px13 = 0.7f, Py13 = 0.4f);
-	glVertex2f(Px14 = 0.5f, Py14 = 0.4f);
-	glVertex2f(Px15 = 0.3f, Py15 = 0.3f);
-	glVertex2f(Px16 = 0.3f, Py16 = 0.4f);
-	glVertex2f(Px17 = 0.5f, Py17 = 0.5f);
-	glVertex2f(Px18 = 0.5f, Py18 = 0.7f);
+	//bico
+	glColor3f(0.7, 0.13, 0.13);
+	glBegin(GL_TRIANGLES);
+	glVertex2f(Px1 = 0.1f, Py1 = 0.3f);
+	glVertex2f(Px2 = 0.2f, Py2 = 0.4f);
+	glVertex2f(Px3 = 0.2f, Py3 = 0.2f);
 	glEnd();
 
+	//asa esquerda
+	glColor3f(0.7, 0.13, 0.13);
+	glBegin(GL_QUADS);
+	glVertex2f(Px4 = 0.3f, Py4 = 0.2f);
+	glVertex2f(Px5 = 0.5f, Py5 = 0.2f);
+	glVertex2f(Px6 = 0.6f, Py6 = 0.1f);
+	glVertex2f(Px7 = 0.4f, Py7 = 0.1f);
+	glEnd();
+
+	//asa direita
+	glColor3f(0.7, 0.13, 0.13);
+	glBegin(GL_QUADS);
+	glVertex2f(Px8 = 0.3f, Py8 = 0.4f);
+	glVertex2f(Px9 = 0.4f, Py9 = 0.5f);
+	glVertex2f(Px10 = 0.6f, Py10 = 0.5f);
+	glVertex2f(Px11 = 0.5f, Py11 = 0.4f);
+	glEnd();
+
+	//corpo
+	glColor3f(0.7, 0.13, 0.13);
+	glBegin(GL_QUADS);
+	glVertex2f(Px12 = 0.2f, Py12 = 0.2f);
+	glVertex2f(Px13 = 0.2f, Py13 = 0.4f);
+	glVertex2f(Px14 = 0.7f, Py14 = 0.4f);
+	glVertex2f(Px15= 0.7f, Py15 = 0.2f);
+	glEnd();
+
+	//calda
+	glColor3f(0.7, 0.13, 0.13);
+	glBegin(GL_QUADS);
+	glVertex2f(Px16 = 0.7f, Py16 = 0.2f);
+	glVertex2f(Px17 = 0.7f, Py17 = 0.4f);
+	glVertex2f(Px18 = 0.8f, Py18 = 0.5f);
+	glVertex2f(Px19 = 0.9f, Py19 = 0.5f);
+	glVertex2f(Px20 = 0.9f, Py20 = 0.5f);
+	glEnd();
 }
 
 Aviao::Aviao()

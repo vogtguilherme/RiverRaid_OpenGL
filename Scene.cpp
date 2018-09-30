@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include"Barco.h"
+#include "Muro.h"
 #include "Aviao.h"
 #include "Combustivel.h"
 #include"Helicoptero.h"
@@ -16,6 +17,7 @@
 Barco barquinho;
 Helicoptero copter;
 Combustivel gasolina;
+Muro paredes;
 Aviao aviao;
 //Criação de variáveis
 //Velocidade das linhas
@@ -29,9 +31,15 @@ void Desenhos(void)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(-5, 5, -5, 5);
+
+
 	copter.Desenhahelecoptyero();
 	barquinho.desenhabarco();
 	gasolina.desenhacobustivel();
+	aviao.DesenhaAviao();
+	paredes.Desenhamuro();
+
+
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -142,6 +150,16 @@ void Scene::update(void)
 	glutSpecialFunc(Teclas);
 	//gasolina.desenhacobustivel();
 
+	if (copter.Px7 >= paredes.Px1 && copter.Px7 <= paredes.Px3)
+	{
+		if (copter.Py7 >= paredes.Py2 && copter.Py7 <= paredes.Py1)
+		{
+			printf("passou");
+			copter.Desenhahelecoptyero();
+		}
+	}
+	//if(sapo.sx1 >= carro[i].bx1 && sapo.sx1 <= carro[i].bx2) || (sapo.sx2 >= carro[i].bx1 && sapo.sx2 <= carro[i].bx2)
+
 	//movimentação copter
 	if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
 	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;
@@ -150,6 +168,10 @@ void Scene::update(void)
 	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
 
 	copter.Desenhahelecoptyero();
+
+
+
+
 
 	//movimentacao barquinho
 	if (barquinho.extremoRight <= -5 && barquinho.paraLeft == true)barquinho.paraLeft = false;
@@ -169,6 +191,11 @@ void Scene::update(void)
 
 	gasolina.desenhacobustivel();
 	
+
+	aviao.DesenhaAviao();
+	paredes.Desenhamuro();
+
+
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();

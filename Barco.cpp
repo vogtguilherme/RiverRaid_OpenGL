@@ -31,6 +31,8 @@ void Barco::CriaBarco(float _x, float _y)
 void Barco::desenhabarco()
 {
 	if (paraLeft) {
+
+		//base
 		glColor3f(1.0, 0.0, 0.0);
 		glBegin(GL_QUADS);
 		glVertex2f(px1 + 0.1f, py1 + 0.3f);
@@ -38,6 +40,24 @@ void Barco::desenhabarco()
 		glVertex2f(px3 + 0.5f, py3 + 0.1f);
 		glVertex2f(px4 + 0.2f, py4 + 0.1f);
 		glEnd();
+
+		//tronco
+		glColor3f(0.74, 0.56, 0.56);
+		glBegin(GL_QUADS);
+		glVertex2f(px1 + 0.3f, py1 + 0.3f);
+		glVertex2f(px2 + 0.3f, py2 + 0.5f);
+		glVertex2f(px3 + 0.4f, py3 + 0.5f);
+		glVertex2f(px4 + 0.4f, py4 + 0.3f);
+		glEnd();
+
+		//velas
+		glColor3f(0.75, 1.0, 0.0);
+		glBegin(GL_TRIANGLES);
+		glVertex2f(px1 + 0.4f, py1 + 0.3f);
+		glVertex2f(px2 + 0.4f, py2 + 0.5f);
+		glVertex2f(px3 + 0.6f, py3 + 0.3f);
+		glEnd();
+
 	}
 	else
 	{

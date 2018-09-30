@@ -30,6 +30,9 @@
     <ClInclude Include="Aviao.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Muro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Barco.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Aviao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Muro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
