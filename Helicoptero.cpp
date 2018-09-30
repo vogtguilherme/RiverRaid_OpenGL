@@ -14,7 +14,7 @@ void Helicoptero::Criahelecoptero(float _x, float _y)
 	Px9 = 0.6f + _x;
 	Px10 = 0.6f + _x;
 	Px11 = 1.0f + _x;
-	Px12 = 1.0f + _x;;
+	Px12 = 1.0f + _x;
 	Px13 = 0.8f + _x;
 	Px14 = 0.7f + _x;
 	Px15 = 0.4f + _x;
@@ -33,7 +33,7 @@ void Helicoptero::Criahelecoptero(float _x, float _y)
 	Py12 = 0.1f + _y;
 	Py13 = 0.1f + _y;
 	Py14 = 0.0f + _y;
-	Py15 = 0.0f + _y;;
+	Py15 = 0.0f + _y;
 }
 void Helicoptero::Desenhahelecoptyero()
 {
@@ -48,19 +48,26 @@ void Helicoptero::Desenhahelecoptyero()
 		glVertex2f(Px8 + 1.0f, Py8 + 0.5f);
 		glEnd();
 
+		//tronco
 		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_POLYGON);
-		glVertex2f(Px1 + 0.3f, Py1 + 0.1f);
-		glVertex2f(Px2 + 0.3f, Py2 + 0.3f);
+		glBegin(GL_QUADS);
 		glVertex2f(Px3 + 0.5f, Py3 + 0.3f);
 		glVertex2f(Px4 + 0.5f, Py4 + 0.5f);
 		glVertex2f(Px9 + 0.6f, Py9 + 0.5f);
 		glVertex2f(Px10 + 0.6f, Py10 + 0.3f);
+		glEnd();
+
+		//corpo
+		glColor3f(1.0, 1.0, 0.0);
+		glBegin(GL_QUADS);
+		glVertex2f(Px1 + 0.3f, Py1 + 0.1f);
+		glVertex2f(Px2 + 0.3f, Py2 + 0.3f);
 		glVertex2f(Px11 + 1.0f, Py11 + 0.3f);
 		glVertex2f(Px12 + 1.0f, Py12 + 0.1f);
 		glVertex2f(Px13 + 0.8f, Py13 + 0.1f);
 		glVertex2f(Px14 + 0.7f, Py14 + 0.0f);
 		glVertex2f(Px15 + 0.4f, Py15 + 0.0f);
+		glVertex2f(Px1 + 0.3f, Py1 + 0.1f);
 		glEnd();
 	}
 	else
@@ -74,19 +81,26 @@ void Helicoptero::Desenhahelecoptyero()
 		glVertex2f(Px8 - 1.0f, Py8 + 0.5f);
 		glEnd();
 
+		//tronco
 		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_POLYGON);
-		glVertex2f(Px1 - 0.3f, Py1 + 0.1f);
-		glVertex2f(Px2 - 0.3f, Py2 + 0.3f);
+		glBegin(GL_QUADS);
 		glVertex2f(Px3 - 0.5f, Py3 + 0.3f);
 		glVertex2f(Px4 - 0.5f, Py4 + 0.5f);
 		glVertex2f(Px9 - 0.6f, Py9 + 0.5f);
 		glVertex2f(Px10 - 0.6f, Py10 + 0.3f);
+		glEnd();
+
+		//corpo
+		glColor3f(1.0, 1.0, 0.0);
+		glBegin(GL_QUADS);
+		glVertex2f(Px1 - 0.3f, Py1 + 0.1f);
+		glVertex2f(Px2 - 0.3f, Py2 + 0.3f);
 		glVertex2f(Px11 - 1.0f, Py11 + 0.3f);
 		glVertex2f(Px12 - 1.0f, Py12 + 0.1f);
 		glVertex2f(Px13 - 0.8f, Py13 + 0.1f);
 		glVertex2f(Px14 - 0.7f, Py14 + 0.0f);
 		glVertex2f(Px15 - 0.4f, Py15 + 0.0f);
+		glVertex2f(Px1 - 0.3f, Py1 + 0.1f);
 		glEnd();
 	}
 }

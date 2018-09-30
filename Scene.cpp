@@ -30,8 +30,7 @@ void Desenhos(void)
 	glLoadIdentity();
 	gluOrtho2D(-5, 5, -5, 5);
 	copter.Desenhahelecoptyero();
-	//aviao.DesenhaAviao();
-	//gasolina.desenhacobustivel();
+	barquinho.desenhabarco();
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -159,6 +158,8 @@ void Scene::update(void)
 	
 	glutSpecialFunc(Teclas);
 	//gasolina.desenhacobustivel();
+
+	//movimentação copter
 	if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
 	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;
 
@@ -166,7 +167,17 @@ void Scene::update(void)
 	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
 
 	copter.Desenhahelecoptyero();
-	//aviao.DesenhaAviao();
+
+	//movimentacao barquinho
+
+	if (barquinho.extremoRight <= -5 && barquinho.paraLeft == true)barquinho.paraLeft = false;
+	else if (barquinho.extremoLeft >= 5 && barquinho.paraLeft == false)barquinho.paraLeft = true;
+
+	if (barquinho.paraLeft == true)barquinho.MoveBarco(-speedl1 * 10, -speedY);
+	else if (barquinho.paraLeft == false)barquinho.MoveBarco(-speedl1 * 10, -speedY);
+
+	
+	barquinho.desenhabarco();
 	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
@@ -176,7 +187,7 @@ void Scene::update(void)
 void Scene::start()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
-	barquinho.criabarco(500, 650, 650, 500, 110, 110, 70, 70);
+	
 	//copter.Criahelecoptero();
 	glutPostRedisplay();
 }
