@@ -31,6 +31,7 @@ void Desenhos(void)
 	gluOrtho2D(-5, 5, -5, 5);
 	copter.Desenhahelecoptyero();
 	barquinho.desenhabarco();
+	gasolina.desenhacobustivel();
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -58,10 +59,8 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutMouseFunc(GerenciaMouse);
 	
 	//glutSpecialFunc(TeclasEspeciais);
-	glutDisplayFunc(Desenhos);
-	
+	glutDisplayFunc(Desenhos);	
 	start();
-	//glutTimerFunc(50, Animacao, 1);
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
 
@@ -109,27 +108,11 @@ void Scene::GerenciaMouse(int button, int state, int x, int y)
 	glutPostRedisplay();
 }
 // Função callback chamada para gerenciar eventos do teclado
-// para teclas especiais, tais como F1, PgDn e Home
 void Teclas(int tecla, int x, int y )
 {
 	if (tecla == GLUT_KEY_DOWN)
 	{
 
-		//nao serve 
-		/*sapo.sx1 += 40;
-		sapo.sx2 += 40;
-		sapo.sx3 += 40;
-		sapo.sx4 += 40;*/
-
-		
-			/*barquinho.px1 += 600.0f;
-			barquinho.px2 += 600.0f;
-			barquinho.px3  += 600.0f;
-			barquinho.px4  += 600.0f;
-			barquinho.py1  += 600.0f;
-			barquinho.py2  += 600.0f;
-			barquinho.py3  += 600.0f;
-			barquinho.py4  += 600.0f;*/
 		
 		
 	}
@@ -169,15 +152,22 @@ void Scene::update(void)
 	copter.Desenhahelecoptyero();
 
 	//movimentacao barquinho
-
 	if (barquinho.extremoRight <= -5 && barquinho.paraLeft == true)barquinho.paraLeft = false;
 	else if (barquinho.extremoLeft >= 5 && barquinho.paraLeft == false)barquinho.paraLeft = true;
 
 	if (barquinho.paraLeft == true)barquinho.MoveBarco(-speedl1 * 10, -speedY);
 	else if (barquinho.paraLeft == false)barquinho.MoveBarco(-speedl1 * 10, -speedY);
 
-	
 	barquinho.desenhabarco();
+
+	//movimentacao gasolina
+	if (gasolina.extremodowm <= -5 && gasolina.paradowun == true)gasolina.paradowun = false;
+	else if (gasolina.extremoUP >= 5 && gasolina.paradowun == false)gasolina.paradowun = true;
+
+	if (gasolina.paradowun == true)gasolina.movecombustivel(0.0f, -speedY * 20);
+	else if (gasolina.paradowun == false)gasolina.movecombustivel(0, -speedY * 20);
+
+	gasolina.desenhacobustivel();
 	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis

@@ -3,8 +3,8 @@ class Combustivel
 {
 public:
 	bool paradowun = true;
-	float px1, px2, px3, px4, px5, px6, py1, py2, py3, py4, py5, py6, extremodowm, extremoUP;
-
+	float px1, px2, px3, px4, px5, px6, py1, py2, py3, py4, py5, py6;
+	float extremodowm, extremoUP;
 	void criacombustivel(float _x, float _y);
 	//float x, y;
 
