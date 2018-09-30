@@ -17,15 +17,15 @@ void Muro::Criamuro(float x, float y)
 
 void Muro::Desenhamuro()
 {
-	////LADO DIREITO
-	//glColor3f(0.43, 0.21, 0.1);
-	////glBegin(GL_LINE_LOOP);
-	//glBegin(GL_QUADS);
-	//glVertex2f(Px1 + 3.0f, Py1 -5.0f);
-	//glVertex2f(Px2 + 3.0f, Py2 + 5.0f);
-	//glVertex2f(Px3 + 5.0f, Py3 + 5.0f);
-	//glVertex2f(Px4 + 5.0f, Py4 - 5.0f);
-	//glEnd();
+	//LADO DIREITO
+	glColor3f(0.43, 0.21, 0.1);
+	//glBegin(GL_LINE_LOOP);
+	glBegin(GL_QUADS);
+	glVertex2f(Px1 + 3.0f, Py1 -5.0f);
+	glVertex2f(Px2 + 3.0f, Py2 + 5.0f);
+	glVertex2f(Px3 + 5.0f, Py3 + 5.0f);
+	glVertex2f(Px4 + 5.0f, Py4 - 5.0f);
+	glEnd();
 
 	//LADO ESQUERDO
 	glColor3f(0.43, 0.21, 0.1);

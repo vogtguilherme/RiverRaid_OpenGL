@@ -2,6 +2,7 @@
 #include"Barco.h"
 #include "Muro.h"
 #include "Aviao.h"
+#include"Player.h"
 #include "Combustivel.h"
 #include"Helicoptero.h"
 #include <time.h>
@@ -19,6 +20,7 @@ Helicoptero copter;
 Combustivel gasolina;
 Muro paredes;
 Aviao aviao;
+Player jogador;
 //Criação de variáveis
 //Velocidade das linhas
 float speedl1 = 0.0001f;
@@ -36,9 +38,8 @@ void Desenhos(void)
 	copter.Desenhahelecoptyero();
 	barquinho.desenhabarco();
 	gasolina.desenhacobustivel();
-	aviao.DesenhaAviao();
 	paredes.Desenhamuro();
-
+	jogador.DesenhaPlayer();
 
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
@@ -51,7 +52,7 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutInit(&argc, argv);
 	// Indica que deve ser usado um unico buffer para armazenamento da imagem e representacao de cores RGB
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	
+
 	glutInitWindowPosition(250, 50);
 	glutInitWindowSize(800, 600);
 
@@ -65,9 +66,10 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutKeyboardFunc(GerenciaTeclado);
 	glutMouseFunc(GerenciaMouse);
-	
+
+
 	//glutSpecialFunc(TeclasEspeciais);
-	glutDisplayFunc(Desenhos);	
+	glutDisplayFunc(Desenhos);
 	start();
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
@@ -90,16 +92,87 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 {
 	switch (key) {
 	case 'R':
-	case 'r':// muda a cor corrente para vermelho
-		glColor3f(1.0f, 0.0f, 0.0f);
+	case 'r':
+		//PLAYER SE MOVENDO PARA A DIREITA		
+		jogador.Px1 += 0.1f;
+		jogador.Px2 += 0.1f;
+		jogador.Px3 += 0.1f;
+		jogador.Px4 += 0.1f;
+		jogador.Px5 += 0.1f;
+		jogador.Px6 += 0.1f;
+		jogador.Px7 += 0.1f;
+		jogador.Px8 += 0.1f;
+		jogador.Px9 += 0.1f;
+		jogador.Px10 += 0.1f;
+		jogador.Px11 += 0.1f;
+		jogador.Px12 += 0.1f;
+		jogador.Px13 += 0.1f;
+		jogador.Px14 += 0.1f;
+		jogador.Px15 += 0.1f;
+		jogador.Px16 += 0.1f;
 		break;
+
+		//PLAYER SE MOVENDO PARA ESQUERDA
 	case 'G':
-	case 'g':// muda a cor corrente para verde
-		glColor3f(0.0f, 1.0f, 0.0f);
+	case 'g':
+		jogador.Px1 += -0.1f;
+		jogador.Px2 += -0.1f;
+		jogador.Px3 += -0.1f;
+		jogador.Px4 += -0.1f;
+		jogador.Px5 += -0.1f;
+		jogador.Px6 += -0.1f;
+		jogador.Px7 += -0.1f;
+		jogador.Px8 += -0.1f;
+		jogador.Px9 += -0.1f;
+		jogador.Px10 += -0.1f;
+		jogador.Px11 += -0.1f;
+		jogador.Px12 += -0.1f;
+		jogador.Px13 += -0.1f;
+		jogador.Px14 += -0.1f;
+		jogador.Px15 += -0.1f;
+		jogador.Px16 += -0.1f;
 		break;
+
+		//MOVE PARA CIMA
 	case 'B':
-	case 'b':// muda a cor corrente para azul
-		glColor3f(0.0f, 0.0f, 1.0f);
+	case 'b':
+		jogador.Py1 += 0.1f;
+		jogador.Py2 += 0.1f;
+		jogador.Py3 += 0.1f;
+		jogador.Py4 += 0.1f;
+		jogador.Py5 += 0.1f;
+		jogador.Py6 += 0.1f;
+		jogador.Py7 += 0.1f;
+		jogador.Py8 += 0.1f;
+		jogador.Py9 += 0.1f;
+		jogador.Py10 += 0.1f;
+		jogador.Py11 += 0.1f;
+		jogador.Py12 += 0.1f;
+		jogador.Py13 += 0.1f;
+		jogador.Py14 += 0.1f;
+		jogador.Py15 += 0.1f;
+		jogador.Py16 += 0.1f;
+		break;
+
+		//MOVE PARA BAIXO
+	case'W':
+	case'w':
+		jogador.Py1 += -0.1f;
+		jogador.Py2 += -0.1f;
+		jogador.Py3 += -0.1f;
+		jogador.Py4 += -0.1f;
+		jogador.Py5 += -0.1f;
+		jogador.Py6 += -0.1f;
+		jogador.Py7 += -0.1f;
+		jogador.Py8 += -0.1f;
+		jogador.Py9 += -0.1f;
+		jogador.Py10 += -0.1f;
+		jogador.Py11 += -0.1f;
+		jogador.Py12 += -0.1f;
+		jogador.Py13 += -0.1f;
+		jogador.Py14 += -0.1f;
+		jogador.Py15 += -0.1f;
+		jogador.Py16 += -0.1f;
 		break;
 	}
 	glutPostRedisplay();
@@ -116,14 +189,9 @@ void Scene::GerenciaMouse(int button, int state, int x, int y)
 	glutPostRedisplay();
 }
 // Função callback chamada para gerenciar eventos do teclado
-void Teclas(int tecla, int x, int y )
+void Teclas(int tecla, int x, int y)
 {
-	if (tecla == GLUT_KEY_DOWN)
-	{
-
-		
-		
-	}
+	
 	glutPostRedisplay();
 }
 //void Scene::TeclasEspeciais(int tecla, int x, int y)
@@ -146,19 +214,22 @@ void Scene::update(void)
 	{
 		objetos[i]->draw();
 	}*/
-	
-	glutSpecialFunc(Teclas);
+
+
 	//gasolina.desenhacobustivel();
 
-	if (copter.Px7 >= paredes.Px1 && copter.Px7 <= paredes.Px3)
+
+
+	//TESTANDO COLISAO POR PONTO
+	/*if (copter.Px7 >= paredes.Px1 && copter.Px7 <= paredes.Px3)
 	{
 		if (copter.Py7 >= paredes.Py2 && copter.Py7 <= paredes.Py1)
 		{
-			printf("passou");
-			copter.Desenhahelecoptyero();
+
+
 		}
-	}
-	//if(sapo.sx1 >= carro[i].bx1 && sapo.sx1 <= carro[i].bx2) || (sapo.sx2 >= carro[i].bx1 && sapo.sx2 <= carro[i].bx2)
+	}*/
+
 
 	//movimentação copter
 	if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
@@ -190,9 +261,9 @@ void Scene::update(void)
 	else if (gasolina.paradowun == false)gasolina.movecombustivel(0, -speedY * 20);
 
 	gasolina.desenhacobustivel();
-	
 
-	aviao.DesenhaAviao();
+
+	jogador.DesenhaPlayer();
 	paredes.Desenhamuro();
 
 
@@ -204,7 +275,7 @@ void Scene::update(void)
 void Scene::start()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
-	
+
 	//copter.Criahelecoptero();
 	glutPostRedisplay();
 }
@@ -241,7 +312,7 @@ void Animacao(int valor)
 
 Scene::~Scene()
 {
-	
+
 }
 
 /*Scene::Scene()

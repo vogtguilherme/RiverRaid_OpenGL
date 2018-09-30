@@ -115,6 +115,7 @@
     <ClInclude Include="Combustivel.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Muro.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +125,7 @@
     <ClCompile Include="Helicoptero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Muro.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
