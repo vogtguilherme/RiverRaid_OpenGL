@@ -34,11 +34,10 @@ void Desenhos(void)
 	glLoadIdentity();
 	gluOrtho2D(-5, 5, -5, 5);
 
-
+	paredes.Desenhamuro();
 	copter.Desenhahelecoptyero();
 	barquinho.desenhabarco();
 	gasolina.desenhacobustivel();
-	paredes.Desenhamuro();
 	jogador.DesenhaPlayer();
 
 	glutSwapBuffers();
@@ -230,10 +229,20 @@ void Scene::update(void)
 		}
 	}*/
 
-
 	//movimentação copter
-	if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
-	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;
+	/*if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
+	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;*/
+
+	if (copter.extremoLeft <= paredes.extremoLeft && copter.paraLeft == true)
+	{
+		copter.paraLeft = false;
+		copter.MoveHelecoptero(copter.sizeX, 0);
+	}
+	else if (copter.extremoRight >= paredes.extremoRight && copter.paraLeft == false)
+	{
+		copter.paraLeft = true;
+		copter.MoveHelecoptero(-copter.sizeX, 0);
+	}
 
 	if (copter.paraLeft == true) copter.MoveHelecoptero(-speedl1 * 20, -speedY);
 	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
@@ -241,15 +250,20 @@ void Scene::update(void)
 	copter.Desenhahelecoptyero();
 
 
-
-
-
 	//movimentacao barquinho
-	if (barquinho.extremoRight <= -5 && barquinho.paraLeft == true)barquinho.paraLeft = false;
-	else if (barquinho.extremoLeft >= 5 && barquinho.paraLeft == false)barquinho.paraLeft = true;
+	if (barquinho.extremoLeft <= paredes.extremoLeft && barquinho.paraLeft == true)
+	{
+		barquinho.paraLeft = false;
+		barquinho.MoveBarco(barquinho.sizeX, 0);
+	}
+	else if (barquinho.extremoRight >= paredes.extremoRight && barquinho.paraLeft == false)
+	{
+		barquinho.paraLeft = true;
+		barquinho.MoveBarco(-barquinho.sizeX, 0);
+	}
 
 	if (barquinho.paraLeft == true)barquinho.MoveBarco(-speedl1 * 10, -speedY);
-	else if (barquinho.paraLeft == false)barquinho.MoveBarco(-speedl1 * 10, -speedY);
+	else if (barquinho.paraLeft == false)barquinho.MoveBarco(speedl1 * 10, -speedY);
 
 	barquinho.desenhabarco();
 
@@ -275,6 +289,8 @@ void Scene::update(void)
 void Scene::start()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
+
+	paredes.Criamuro();
 
 	//copter.Criahelecoptero();
 	glutPostRedisplay();
