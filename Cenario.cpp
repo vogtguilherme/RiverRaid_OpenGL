@@ -19,7 +19,7 @@ void Cenario::desenharElemento(int vertices, float red, float green, float blue)
 
 	glColor3f(red, green, blue);
 	if (vertices == 4)
-		glBegin(GL_QUADS);
+		glBegin(GL_POLYGON);
 	else if (vertices == 3)
 		glBegin(GL_TRIANGLES);
 	else
