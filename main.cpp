@@ -1,4 +1,4 @@
-#include "bibliotecas.h"
+
 #include "configuracao.h"
 
 void runMainLoop(int val);

@@ -27,4 +27,5 @@ void Cenario::desenharElemento(float red, float green, float blue)
 	}
 	glEnd();
 	glPopMatrix();
+	//glTranslatef(800.f / 2.f, 600.f / 2.f, 0.f);
 }

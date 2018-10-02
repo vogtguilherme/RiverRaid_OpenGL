@@ -1,6 +1,10 @@
 #include "configuracao.h"
 
+int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
+
 GLfloat cameraX, cameraY;
+
+Bloco cenarioBase;
 
 bool Setup()
 {
@@ -12,7 +16,7 @@ bool Setup()
 	//Initialize Projection Matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0.0, LARGURA_TELA, ALTURA_TELA, 0.0, 1.0, -1.0);
+	gluOrtho2D(-10.0, 10.0, -10.0, 10.0);	
 
 	//Initialize Modelview Matrix
 	glMatrixMode(GL_MODELVIEW);
@@ -52,62 +56,25 @@ void Render()
 	glPushMatrix();
 
 	//Move to center of the screen
-	glTranslatef(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f, 0.f);
-	
-	
-	//Red quad
-	glBegin(GL_QUADS);
-	glColor3f(1.f, 0.f, 0.f);
-	glVertex2f(-LARGURA_TELA / 4.f, -ALTURA_TELA / 4.f);
-	glVertex2f(LARGURA_TELA / 4.f, -ALTURA_TELA / 4.f);
-	glVertex2f(LARGURA_TELA / 4.f, ALTURA_TELA / 4.f);
-	glVertex2f(-LARGURA_TELA / 4.f, ALTURA_TELA / 4.f);
-	glEnd();
+	//glTranslatef(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f, 0.f);
 
-	//Move to the right of the screen
-	glTranslatef(LARGURA_TELA, 0.f, 0.f);
+	cenarioBase.DesenhaBloco();
 
-	//Green quad
-	glBegin(GL_QUADS);
-	glColor3f(0.f, 1.f, 0.f);
-	glVertex2f(-LARGURA_TELA / 4.f, -ALTURA_TELA / 4.f);
-	glVertex2f(LARGURA_TELA / 4.f, -ALTURA_TELA / 4.f);
-	glVertex2f(LARGURA_TELA / 4.f, ALTURA_TELA / 4.f);
-	glVertex2f(-LARGURA_TELA / 4.f, ALTURA_TELA / 4.f);
-	glEnd();
-
-	//Move to the lower right of the screen
-	glTranslatef(0.f, ALTURA_TELA, 0.f);
-	/*
-	//Blue quad
-	glBegin(GL_QUADS);
-	glColor3f(0.f, 0.f, 1.f);
-	glVertex2f(-SCREEN_WIDTH / 4.f, -SCREEN_HEIGHT / 4.f);
-	glVertex2f(SCREEN_WIDTH / 4.f, -SCREEN_HEIGHT / 4.f);
-	glVertex2f(SCREEN_WIDTH / 4.f, SCREEN_HEIGHT / 4.f);
-	glVertex2f(-SCREEN_WIDTH / 4.f, SCREEN_HEIGHT / 4.f);
-	glEnd();
-
-	//Move below the screen
-	glTranslatef(-SCREEN_WIDTH, 0.f, 0.f);
-
-	//Yellow quad
-	glBegin(GL_QUADS);
-	glColor3f(1.f, 1.f, 0.f);
-	glVertex2f(-SCREEN_WIDTH / 4.f, -SCREEN_HEIGHT / 4.f);
-	glVertex2f(SCREEN_WIDTH / 4.f, -SCREEN_HEIGHT / 4.f);
-	glVertex2f(SCREEN_WIDTH / 4.f, SCREEN_HEIGHT / 4.f);
-	glVertex2f(-SCREEN_WIDTH / 4.f, SCREEN_HEIGHT / 4.f);
-	glEnd();
-
-	*/
+	contagemFrames++;
+	tempoFinal = time(NULL);
+	if (tempoFinal - tempoInicial > 0)
+	{
+		cout << "FPS: " << contagemFrames / (tempoFinal - tempoInicial) << endl;
+		contagemFrames = 0;
+		tempoInicial = tempoFinal;
+	}
 
 	//Update screen
 	glutSwapBuffers();
 }
 
 void Update()
-{
+{	
 }
 
 void Input(unsigned char key, int x, int y)
@@ -115,19 +82,19 @@ void Input(unsigned char key, int x, int y)
 	//If the user pressed w/a/s/d, change camera position
 	if (key == 'w')
 	{
-		cameraY -= 16.f;
+		cameraY -= 1.f;
 	}
 	else if (key == 's')
 	{
-		cameraY += 16.f;
+		cameraY += 1.f;
 	}
 	else if (key == 'a')
 	{
-		cameraX -= 16.f;
+		cameraX -= 1.f;
 	}
 	else if (key == 'd')
 	{
-		cameraX += 16.f;
+		cameraX += 1.f;
 	}
 
 	//Take saved matrix off the stack and reset it

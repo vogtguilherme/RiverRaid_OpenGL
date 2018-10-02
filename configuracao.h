@@ -1,6 +1,9 @@
 #pragma once
 
+#include <time.h>
+
 #include "bibliotecas.h"
+#include "Bloco.h"
 
 #ifndef CONFIGURACAO_H
 #define CONFIGURACAO_H

@@ -1,6 +1,7 @@
 #pragma once
-#include "GL\glew.h"
-#include "GL\freeglut.h"
+
+#include "bibliotecas.h"
+
 #include <vector>
 
 using namespace std;
