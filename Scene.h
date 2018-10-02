@@ -2,6 +2,10 @@
 #include "GL\glew.h"
 #include "GL\freeglut.h"
 
+#include "Player.h"
+#include "Cenario.h"
+#include "Bloco.h"
+
 #include <iostream>
 #include <string>
 #include <sstream> 
@@ -26,20 +30,4 @@ public:
 	//static vector<Object*> objetos;
 	Scene(int argc, char **argv, string title, int width = 600, int height = 600);
 	~Scene();
-	
-
 };
-
-/*class Scene
-{
-private:
-	string textoPontos;
-	string pontos;
-	string vidas;
-	string combustivel;
-public:
-
-	Scene();
-
-	void Texto(const char *text, int length, int x, int y);
-};*/

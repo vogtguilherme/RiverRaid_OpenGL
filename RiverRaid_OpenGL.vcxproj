@@ -112,7 +112,12 @@
   <ItemGroup>
     <ClInclude Include="Aviao.h" />
     <ClInclude Include="Barco.h" />
+    <ClInclude Include="bibliotecas.h" />
+    <ClInclude Include="Bloco.h" />
+    <ClInclude Include="Cena.h" />
+    <ClInclude Include="Cenario.h" />
     <ClInclude Include="Combustivel.h" />
+    <ClInclude Include="configuracao.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Muro.h" />
     <ClInclude Include="Player.h" />
@@ -122,7 +127,11 @@
   <ItemGroup>
     <ClCompile Include="Aviao.cpp" />
     <ClCompile Include="Barco.cpp" />
+    <ClCompile Include="Bloco.cpp" />
+    <ClCompile Include="Cena.cpp" />
+    <ClCompile Include="Cenario.cpp" />
     <ClCompile Include="Combustivel.cpp" />
+    <ClCompile Include="configuracao.cpp" />
     <ClCompile Include="Helicoptero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Muro.cpp" />
