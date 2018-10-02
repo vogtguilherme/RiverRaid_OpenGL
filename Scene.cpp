@@ -265,14 +265,44 @@ void Scene::update(void)
 
 
 
-	if (barquinho.destruiu==true)
+	if (barquinho.destruiu==true
+)
 	{
 		barquinho.desenhabarco();
 	}
 	
-	//testepara desenhar o barco com colisao
+	//testepara  colisao
 	
+	/*if (bala.px + 0.4f >= barquinho.px1 + 0.1f && bala.px + 0.4f <= barquinho.px + 0.2f) {
+		if (bala.py + 1.3f >= barquinho.py + 0.3f &&bala.py + 1.3f <= barquinho.py + 0.3f) {
+			printf("colidu primero");			
+		}
+	}
+	else {
+		if (bala.px + 0.5f >= barquinho.px1 + 0.1f && bala.px + 0.5f <=barquinho.px + 0.2f) {
+			if (bala.py + 1.3f >= bala.py + 1.4f && bala.py + 1.3f <= barquinho.py + 0.3f) {
+				printf("colidiusegundo");
+			}
+		}
+		else {
+			
 
+			if (bala.px + 0.4f >= barquinho.py + 0.1f && bala.px + 0.4f <= barquinho.px + 0.2f) {
+				if (bala.py + 1.4f >= barquinho.py + 0.3f && bala.py + 1.4f <= barquinho.py + 0.3f) {
+					printf("colidiuterceiro");
+				}
+			}
+			
+			
+			else {
+				if (bala.px + 0.5f >= barquinho.px + 0.1f && bala.px + 0.5f <= barquinho.px + 0.2f) {
+					if (bala.py + 1.4f >= barquinho.py + 0.3f && bala.py + 1.4f <= barquinho.py + 0.3f) {
+						printf("colidiu");
+					}
+				}
+			}
+		}
+	}*/
 
 
 	//movimentacao gasolina
@@ -289,9 +319,8 @@ void Scene::update(void)
 		if (bala.tirocima <= paredes.extremoLeft && bala.atirando == true)
 		{
 			
-			
-			bala.atirando = false;
 			bala.MoveBala(0, bala.sizeY);
+			
 		}
 		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 240);
 	}
