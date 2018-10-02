@@ -1,11 +1,12 @@
 #include "Scene.h"
-#include"Barco.h"
+#include "Barco.h"
 #include "Muro.h"
 #include "Aviao.h"
-#include"Tiro.h"
-#include"Player.h"
+#include "Tiro.h"
+#include "Player.h"
 #include "Combustivel.h"
-#include"Helicoptero.h"
+#include "Helicoptero.h"
+
 #include <time.h>
 #include <windows.h>
 #include <gl\glut.h>
@@ -15,6 +16,8 @@
 
 
 //vector<Object*> Scene::objetos = vector<Object*>();
+
+int initialTime = time(NULL), finalTime, frameCount = 0;
 
 Barco barquinho;
 Helicoptero copter;
@@ -67,10 +70,10 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutKeyboardFunc(GerenciaTeclado);
-	glutMouseFunc(GerenciaMouse);
+	glutMouseFunc(GerenciaMouse);	
 
 	glutSpecialFunc(TeclasEspeciais);
-	glutDisplayFunc(Desenhos);
+	//glutDisplayFunc(Desenhos);
 	start();
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
@@ -223,6 +226,8 @@ void Scene::update(void)
 	glLoadIdentity();
 	glClear(GL_COLOR_BUFFER_BIT);
 
+	gluOrtho2D(-5, 5, -5, 5);
+
 	/*for (int i = 0; i < objetos.size(); i++)
 	{
 		objetos[i]->draw();
@@ -297,6 +302,15 @@ void Scene::update(void)
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
+
+	frameCount++;
+	finalTime = time(NULL);
+	if (finalTime - initialTime > 0)
+	{
+		cout << "FPS: " << frameCount / (finalTime - initialTime) << endl;
+		frameCount = 0;
+		initialTime = finalTime;
+	}
 }
 // Inicializa aspectos do rendering
 void Scene::start()
