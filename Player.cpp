@@ -2,12 +2,13 @@
 
 
 
-//void Player::CriaPlayer(float _Px1, float _Px2, float _Px3, float _Px4, float _Px5, float _Px6, float _Px7, float _Px8, float _Px9, float _Px10, float _Px11, float _Px12, float _Px13, float _Px14, float _Px15, float _Px16, float _Py1, float _Py2, float _Py3, float _Py4, float _Py5, float _Py6, float _Py7, float _Py8, float _Py9, float _Py10, float _Py11, float _Py12, float _Py13, float _Py14, float _Py15, float _Py16)
-//{
-//
-//	
-//
-//}
+void Player::CriaPlayer(float x, float y)
+{
+	Px1 += x;
+	Py1 += y;
+	
+
+}
 
 void Player::Desenhodois(float x, float y)
 {
