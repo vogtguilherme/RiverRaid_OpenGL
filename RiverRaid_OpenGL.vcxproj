@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="Aviao.h" />
     <ClInclude Include="Barco.h" />
+    <ClInclude Include="Bloco.h" />
     <ClInclude Include="Cenario.h" />
     <ClInclude Include="Combustivel.h" />
     <ClInclude Include="Helicoptero.h" />
@@ -122,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="Aviao.cpp" />
     <ClCompile Include="Barco.cpp" />
+    <ClCompile Include="Bloco.cpp" />
     <ClCompile Include="Cenario.cpp" />
     <ClCompile Include="Combustivel.cpp" />
     <ClCompile Include="Helicoptero.cpp" />

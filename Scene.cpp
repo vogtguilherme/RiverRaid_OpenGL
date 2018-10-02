@@ -5,7 +5,7 @@
 //vector<Object*> Scene::objetos = vector<Object*>();
 
 Player djongador;
-Cenario agua, montanhaEsquerda, montanhaDireita;
+Bloco bloco01;
 
 int initialTime = time(NULL), finalTime, frameCount = 0;
 
@@ -28,21 +28,6 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutKeyboardFunc(GerenciaTeclado);
 	glutMouseFunc(GerenciaMouse);
 	glutSpecialFunc(TeclasEspeciais);
-
-	montanhaEsquerda.addVertex(-1.0f, 10.0f);
-	montanhaEsquerda.addVertex(-0.6f, 10.0f);
-	montanhaEsquerda.addVertex(-0.6f, -10.0f);
-	montanhaEsquerda.addVertex(-1.0f, -10.0f);
-
-	montanhaDireita.addVertex(0.6f, 10.0f);
-	montanhaDireita.addVertex(1.0, 10.0f);
-	montanhaDireita.addVertex(1.0, -10.0f);
-	montanhaDireita.addVertex(0.6f, -10.0f);
-
-	agua.addVertex(-0.8f, 10.0f);
-	agua.addVertex(0.8f, 10.0f);
-	agua.addVertex(0.8f, -10.0f);
-	agua.addVertex(-0.8f, -10.0f);
 
 	start();
 
@@ -121,11 +106,9 @@ void Scene::update(void)
 		objetos[i]->draw();
 	}*/
 
-	agua.desenharElemento(4, 0, 0, 0.75);
-	montanhaEsquerda.desenharElemento(4, 0, 0.6f, 0);
-	montanhaDireita.desenharElemento(4, 0, 0.6f, 0);
+	//djongador.DesenhaPlayer();
 
-	//djongador.DesenhaPlayer();	
+	bloco01.DesenhaBloco();
 
 	glutSwapBuffers();
 
