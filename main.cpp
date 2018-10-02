@@ -1,3 +1,9 @@
+/*#include "Scene.h"
+
+void main(int argc, char **argv)
+{
+	Scene minhaCena(argc, argv, "River Raid", 800, 600);
+}*/
 
 #include "configuracao.h"
 
@@ -31,11 +37,15 @@ int main(int argc, char* args[])
 		return 1;
 	}
 
+	Start();
+
 	//Set keyboard handler
 	glutKeyboardFunc(Input);
 
 	//Set rendering function
 	glutDisplayFunc(Render);
+
+	//glutIdleFunc(Update);
 
 	//Set main loop
 	glutTimerFunc(1000 / FPS, runMainLoop, 0);

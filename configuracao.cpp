@@ -2,7 +2,10 @@
 
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
+GLfloat velocidadeMovimento = 0.05f;
+
 GLfloat cameraX, cameraY;
+GLfloat cameraPosY;
 
 Bloco cenarioBase;
 
@@ -17,7 +20,7 @@ bool Setup()
 	//Initialize Projection Matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(-10.0, 10.0, -10.0, 10.0);	
+	gluOrtho2D(-5, 5, -5, 5);
 
 	//Initialize Modelview Matrix
 	glMatrixMode(GL_MODELVIEW);
@@ -42,6 +45,9 @@ bool Setup()
 
 void Start()
 {	
+	cout << "Start" << endl;
+
+	cameraPosY = cameraY;
 }
 
 void Render()
@@ -75,12 +81,26 @@ void Render()
 }
 
 void Update()
-{	
+{		
+	cameraPosY += velocidadeMovimento;
+	
+	//Take saved matrix off the stack and reset it
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+	glLoadIdentity();
+
+	//Move camera to position
+	glTranslatef(0.f, cameraY + cameraPosY, 0.f);
+
+	//Save default matrix again with camera translation
+	glPushMatrix();
 }
 
 void Input(unsigned char key, int x, int y)
 {	
-	//If the user pressed w/a/s/d, change camera position
+	//Comportamentos diferentes para cada tecla que o jogador pressionar
+
+	//Se a tecla for W o Jato deve avançar mais rapidamente, e a câmera subir junto
 	if (key == 'w')
 	{
 		cameraY -= 1.f;
@@ -104,7 +124,7 @@ void Input(unsigned char key, int x, int y)
 	glLoadIdentity();
 
 	//Move camera to position
-	glTranslatef(-cameraX, -cameraY, 0.f);
+	glTranslatef(0, -cameraY, 0.f);
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
