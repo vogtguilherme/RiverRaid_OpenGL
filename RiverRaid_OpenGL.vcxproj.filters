@@ -42,6 +42,12 @@
     <ClInclude Include="Bloco.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bibliotecas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="configuracao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Barco.cpp">
@@ -72,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bloco.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cena.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="configuracao.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
