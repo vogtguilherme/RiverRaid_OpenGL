@@ -4,7 +4,7 @@ GLfloat cameraX, cameraY;
 
 bool Setup()
 {
-	printf("Configurando Cena...");
+	printf("Configurando Cena");
 	
 	//Set the viewport
 	glViewport(0.f, 0.f, LARGURA_TELA, ALTURA_TELA);

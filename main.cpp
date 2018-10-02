@@ -22,7 +22,7 @@ int main(int argc, char* args[])
 	//Create Double Buffered Window
 	glutInitDisplayMode(GLUT_DOUBLE);
 	glutInitWindowSize(LARGURA_TELA, ALTURA_TELA);
-	glutCreateWindow("OpenGL");
+	glutCreateWindow("River Raid");
 
 	//Do post window/context creation initialization
 	if (!Setup())

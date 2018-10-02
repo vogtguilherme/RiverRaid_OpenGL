@@ -114,6 +114,7 @@
     <ClInclude Include="Barco.h" />
     <ClInclude Include="bibliotecas.h" />
     <ClInclude Include="Bloco.h" />
+    <ClInclude Include="Cena.h" />
     <ClInclude Include="Cenario.h" />
     <ClInclude Include="Combustivel.h" />
     <ClInclude Include="configuracao.h" />

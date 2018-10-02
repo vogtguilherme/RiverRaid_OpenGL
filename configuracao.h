@@ -5,8 +5,6 @@
 #ifndef CONFIGURACAO_H
 #define CONFIGURACAO_H
 
-using namespace std;
-
 //Variaveis da tela
 const int LARGURA_TELA = 800;
 const int ALTURA_TELA = 600;
