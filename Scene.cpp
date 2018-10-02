@@ -90,8 +90,8 @@ void Scene::AlteraTamanhoJanela(GLsizei w, GLsizei h)
 void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 {
 	switch (key) {
-	case 'R':
-	case 'r':
+	case 'D':
+	case 'd':
 		//PLAYER SE MOVENDO PARA A DIREITA		
 		jogador.Px1 += 0.1f;
 		jogador.Px2 += 0.1f;
@@ -112,8 +112,8 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		break;
 
 		//PLAYER SE MOVENDO PARA ESQUERDA
-	case 'G':
-	case 'g':
+	case 'A':
+	case 'a':
 		jogador.Px1 += -0.1f;
 		jogador.Px2 += -0.1f;
 		jogador.Px3 += -0.1f;
@@ -133,8 +133,8 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		break;
 
 		//MOVE PARA CIMA
-	case 'B':
-	case 'b':
+	case 'W':
+	case 'w':
 		jogador.Py1 += 0.1f;
 		jogador.Py2 += 0.1f;
 		jogador.Py3 += 0.1f;
@@ -154,8 +154,8 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		break;
 
 		//MOVE PARA BAIXO
-	case'W':
-	case'w':
+	case'S':
+	case's':
 		jogador.Py1 += -0.1f;
 		jogador.Py2 += -0.1f;
 		jogador.Py3 += -0.1f;
