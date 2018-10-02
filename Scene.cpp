@@ -2,6 +2,7 @@
 #include"Barco.h"
 #include "Muro.h"
 #include "Aviao.h"
+#include"Tiro.h"
 #include"Player.h"
 #include "Combustivel.h"
 #include"Helicoptero.h"
@@ -21,6 +22,7 @@ Combustivel gasolina;
 Muro paredes;
 Aviao aviao;
 Player jogador;
+Tiro bala;
 //Criação de variáveis
 //Velocidade das linhas
 float speedl1 = 0.0001f;
@@ -39,6 +41,7 @@ void Desenhos(void)
 	barquinho.desenhabarco();
 	gasolina.desenhacobustivel();
 	jogador.DesenhaPlayer();
+	bala.DesenhaTiro();
 
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
@@ -66,8 +69,7 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutKeyboardFunc(GerenciaTeclado);
 	glutMouseFunc(GerenciaMouse);
 
-
-	//glutSpecialFunc(TeclasEspeciais);
+	glutSpecialFunc(TeclasEspeciais);
 	glutDisplayFunc(Desenhos);
 	start();
 	// Dispara a "maquina de estados" de OpenGL
@@ -109,6 +111,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Px14 += 0.1f;
 		jogador.Px15 += 0.1f;
 		jogador.Px16 += 0.1f;
+		bala.px += 0.1f;
 		break;
 
 		//PLAYER SE MOVENDO PARA ESQUERDA
@@ -130,6 +133,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Px14 += -0.1f;
 		jogador.Px15 += -0.1f;
 		jogador.Px16 += -0.1f;
+		bala.px += -0.1f;
 		break;
 
 		//MOVE PARA CIMA
@@ -151,6 +155,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Py14 += 0.1f;
 		jogador.Py15 += 0.1f;
 		jogador.Py16 += 0.1f;
+		bala.py += 0.1f;
 		break;
 
 		//MOVE PARA BAIXO
@@ -172,6 +177,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Py14 += -0.1f;
 		jogador.Py15 += -0.1f;
 		jogador.Py16 += -0.1f;
+		bala.py += -0.1f;
 		break;
 	}
 	glutPostRedisplay();
@@ -193,16 +199,24 @@ void Teclas(int tecla, int x, int y)
 	
 	glutPostRedisplay();
 }
-//void Scene::TeclasEspeciais(int tecla, int x, int y)
-//{
-//	if (tecla == GLUT_KEY_RIGHT) {
-//		
-//	}
-//	if (tecla == GLUT_KEY_LEFT) {
-//		
-//	}
-//	glutPostRedisplay();
-//}
+void Scene::TeclasEspeciais(int tecla, int x, int y)
+{
+	if (tecla == GLUT_KEY_UP)
+	{
+		bala.atirando = true;	
+
+		if (bala.atirando == true)
+		{
+			bala.atirando = false;
+			printf("tafunfando");
+		}
+	}
+	if (tecla == GLUT_KEY_LEFT) 
+	{
+		
+	}
+	glutPostRedisplay();
+}
 void Scene::update(void)
 {
 	glMatrixMode(GL_MODELVIEW);
@@ -214,25 +228,11 @@ void Scene::update(void)
 		objetos[i]->draw();
 	}*/
 
-
-	//gasolina.desenhacobustivel();
-
-
-
-	//TESTANDO COLISAO POR PONTO
-	/*if (copter.Px7 >= paredes.Px1 && copter.Px7 <= paredes.Px3)
-	{
-		if (copter.Py7 >= paredes.Py2 && copter.Py7 <= paredes.Py1)
-		{
-
-
-		}
-	}*/
-
 	//movimentação copter
 	/*if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
 	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;*/
 
+	//colisao do copter com a parede para se movimentar
 	if (copter.extremoLeft <= paredes.extremoLeft && copter.paraLeft == true)
 	{
 		copter.paraLeft = false;
@@ -274,12 +274,25 @@ void Scene::update(void)
 	if (gasolina.paradowun == true)gasolina.movecombustivel(0.0f, -speedY * 20);
 	else if (gasolina.paradowun == false)gasolina.movecombustivel(0, -speedY * 20);
 
+
+
+	//bala teste
+	if (bala.atirando == true) {
+		if (bala.tirocima <= paredes.extremoLeft && bala.atirando == true)
+		{
+			bala.atirando = false;
+			bala.MoveBala(0, bala.sizeY);
+		}
+		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 10);
+	}
+	
+
+	glutSpecialFunc(TeclasEspeciais);
+
 	gasolina.desenhacobustivel();
-
-
 	jogador.DesenhaPlayer();
 	paredes.Desenhamuro();
-
+	bala.DesenhaTiro();
 
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
@@ -291,39 +304,9 @@ void Scene::start()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
 
 	paredes.Criamuro();
-
+	bala.atirando = false;
 	//copter.Criahelecoptero();
 	glutPostRedisplay();
-}
-
-void Animacao(int valor)
-{
-	speedl1 += 0.08f;
-
-	barquinho.px1 += speedl1;
-	barquinho.px2 += speedl1;
-	barquinho.px3 += speedl1;
-	barquinho.px4 += speedl1;
-	barquinho.py1 += speedl1;
-	barquinho.py2 += speedl1;
-	barquinho.py3 += speedl1;
-	barquinho.py4 += speedl1;
-	if (barquinho.px1 < -75)
-	{
-		barquinho.px1 = 800;
-		barquinho.px2 = 875;
-		barquinho.px3 = 875;
-		barquinho.px4 = 800;
-	}
-	//if (barquinho.px1 > 800)
-	//{
-	//	barquinho.px1 = -150;
-	//	barquinho.px2 = 0;
-	//	barquinho.px3 = 0;
-	//	barquinho.px4 = -150;
-	//}
-	glutPostRedisplay();
-	glutTimerFunc(1, Animacao, 1);
 }
 
 Scene::~Scene()
