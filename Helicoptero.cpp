@@ -113,6 +113,9 @@ void Helicoptero::MoveHelecoptero(float _x, float _y)
 	if (paraLeft) extremoRight = Px7 + 1;
 	else extremoRight = Px6 - 0.1;
 
+	sizeX = 0.9f;
+	sizeY = 0.7f;
+
 	Px1 += _x;
 	Px2 += _x;
 	Px3 += _x;

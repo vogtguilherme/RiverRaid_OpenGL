@@ -122,6 +122,7 @@
     <ClInclude Include="Muro.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Tiro.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aviao.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Muro.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Tiro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

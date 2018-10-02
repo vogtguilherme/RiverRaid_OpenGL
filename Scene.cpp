@@ -1,13 +1,52 @@
 #include "Scene.h"
-
+#include"Barco.h"
+#include "Muro.h"
+#include "Aviao.h"
+#include"Tiro.h"
+#include"Player.h"
+#include "Combustivel.h"
+#include"Helicoptero.h"
 #include <time.h>
+#include <windows.h>
+#include <gl\glut.h>
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+
 
 //vector<Object*> Scene::objetos = vector<Object*>();
 
-Player djongador;
-Bloco bloco01;
+Barco barquinho;
+Helicoptero copter;
+Combustivel gasolina;
+Muro paredes;
+Aviao aviao;
+Player jogador;
+Tiro bala;
+//Criação de variáveis
+//Velocidade das linhas
+float speedl1 = 0.00001f;
+float speedY = 0.00001f;
+void Desenhos(void)
+{
+	// Limpa a janela com a cor especificada como cor de fundo
+	glClear(GL_COLOR_BUFFER_BIT);
 
-int initialTime = time(NULL), finalTime, frameCount = 0;
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(-5, 5, -5, 5);
+
+	paredes.Desenhamuro();
+	copter.Desenhahelecoptyero();
+	barquinho.desenhabarco();
+	gasolina.desenhacobustivel();
+	jogador.DesenhaPlayer();
+	bala.DesenhaTiro();
+	
+	glutSwapBuffers();
+	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
+	glutPostRedisplay();
+}
 
 Scene::Scene(int argc, char **argv, string title, int width, int height)
 {
@@ -15,8 +54,9 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutInit(&argc, argv);
 	// Indica que deve ser usado um unico buffer para armazenamento da imagem e representacao de cores RGB
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(width, height);
+
 	glutInitWindowPosition(250, 50);
+	glutInitWindowSize(800, 600);
 
 	// Cria uma janela com o titulo especificado
 	glutCreateWindow(title.c_str());
@@ -27,43 +67,116 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutKeyboardFunc(GerenciaTeclado);
 	glutMouseFunc(GerenciaMouse);
+
 	glutSpecialFunc(TeclasEspeciais);
-
+	glutDisplayFunc(Desenhos);
 	start();
-
 	// Dispara a "maquina de estados" de OpenGL
 	glutMainLoop();
 
 }
-
 
 // Função callback chamada quando o tamanho da janela é alterado
 void Scene::AlteraTamanhoJanela(GLsizei w, GLsizei h)
 {
 	// Especifica as dimensões da Viewport
 	glViewport(0, 0, w, h);
-
 	// Inicializa o sistema de coordenadas
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(-1, 1, -1, 1);	
+	//gluOrtho2D(-win, win, -win, win);
 }
 
 // Função callback chamada para gerenciar eventos de teclado
 void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 {
 	switch (key) {
-	case 'R':
-	case 'r':// muda a cor corrente para vermelho
-		glColor3f(1.0f, 0.0f, 0.0f);
+	case 'D':
+	case 'd':
+		//PLAYER SE MOVENDO PARA A DIREITA		
+		jogador.Px1 += 0.1f;
+		jogador.Px2 += 0.1f;
+		jogador.Px3 += 0.1f;
+		jogador.Px4 += 0.1f;
+		jogador.Px5 += 0.1f;
+		jogador.Px6 += 0.1f;
+		jogador.Px7 += 0.1f;
+		jogador.Px8 += 0.1f;
+		jogador.Px9 += 0.1f;
+		jogador.Px10 += 0.1f;
+		jogador.Px11 += 0.1f;
+		jogador.Px12 += 0.1f;
+		jogador.Px13 += 0.1f;
+		jogador.Px14 += 0.1f;
+		jogador.Px15 += 0.1f;
+		jogador.Px16 += 0.1f;
+		
 		break;
-	case 'G':
-	case 'g':// muda a cor corrente para verde
-		glColor3f(0.0f, 1.0f, 0.0f);
+
+		//PLAYER SE MOVENDO PARA ESQUERDA
+	case 'A':
+	case 'a':
+		jogador.Px1 += -0.1f;
+		jogador.Px2 += -0.1f;
+		jogador.Px3 += -0.1f;
+		jogador.Px4 += -0.1f;
+		jogador.Px5 += -0.1f;
+		jogador.Px6 += -0.1f;
+		jogador.Px7 += -0.1f;
+		jogador.Px8 += -0.1f;
+		jogador.Px9 += -0.1f;
+		jogador.Px10 += -0.1f;
+		jogador.Px11 += -0.1f;
+		jogador.Px12 += -0.1f;
+		jogador.Px13 += -0.1f;
+		jogador.Px14 += -0.1f;
+		jogador.Px15 += -0.1f;
+		jogador.Px16 += -0.1f;
+		
 		break;
-	case 'B':
-	case 'b':// muda a cor corrente para azul
-		glColor3f(0.0f, 0.0f, 1.0f);
+
+		//MOVE PARA CIMA
+	case 'W':
+	case 'w':
+		jogador.Py1 += 0.1f;
+		jogador.Py2 += 0.1f;
+		jogador.Py3 += 0.1f;
+		jogador.Py4 += 0.1f;
+		jogador.Py5 += 0.1f;
+		jogador.Py6 += 0.1f;
+		jogador.Py7 += 0.1f;
+		jogador.Py8 += 0.1f;
+		jogador.Py9 += 0.1f;
+		jogador.Py10 += 0.1f;
+		jogador.Py11 += 0.1f;
+		jogador.Py12 += 0.1f;
+		jogador.Py13 += 0.1f;
+		jogador.Py14 += 0.1f;
+		jogador.Py15 += 0.1f;
+		jogador.Py16 += 0.1f;
+		
+		break;
+
+		//MOVE PARA BAIXO
+	case'S':
+	case's':
+		jogador.Py1 += -0.1f;
+		jogador.Py2 += -0.1f;
+		jogador.Py3 += -0.1f;
+		jogador.Py4 += -0.1f;
+		jogador.Py5 += -0.1f;
+		jogador.Py6 += -0.1f;
+		jogador.Py7 += -0.1f;
+		jogador.Py8 += -0.1f;
+		jogador.Py9 += -0.1f;
+		jogador.Py10 += -0.1f;
+		jogador.Py11 += -0.1f;
+		jogador.Py12 += -0.1f;
+		jogador.Py13 += -0.1f;
+		jogador.Py14 += -0.1f;
+		jogador.Py15 += -0.1f;
+		jogador.Py16 += -0.1f;
+		
 		break;
 	}
 	glutPostRedisplay();
@@ -80,14 +193,29 @@ void Scene::GerenciaMouse(int button, int state, int x, int y)
 	glutPostRedisplay();
 }
 // Função callback chamada para gerenciar eventos do teclado
-// para teclas especiais, tais como F1, PgDn e Home
-void Scene::TeclasEspeciais(int key, int x, int y)
+void Teclas(int tecla, int x, int y)
 {
-	if (key == GLUT_KEY_UP) {
+	
+	glutPostRedisplay();
+}
+void Scene::TeclasEspeciais(int tecla, int x, int y)
+{
+	if (tecla == GLUT_KEY_UP && bala.atirando==true)
+	{
 
+		//verificação se tiro esta ativo 
+		
+		
+		if (bala.atirando == true)
+		{
+			bala.CriaTiro(jogador);
+			
+		}
 	}
-	if (key == GLUT_KEY_DOWN) {
-
+	if (tecla == GLUT_KEY_LEFT) 
+	{
+		bala.atirando = true;
+		
 	}
 	glutPostRedisplay();
 }
@@ -97,39 +225,163 @@ void Scene::update(void)
 	glLoadIdentity();
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	//AlteraTamanhoJanela(240, 180);	
-	//AlteraTamanhoJanela(800, 600);
-	gluOrtho2D(-5, 5, -5, 5);
 
-	/*for (int i = 0; i < objetos.size(); i++)
+	//colisao bala
+	
+	
+
+	//colisao do copter com a parede para se movimentar
+	if (copter.extremoLeft <= paredes.extremoLeft && copter.paraLeft == true)
 	{
-		objetos[i]->draw();
+		copter.paraLeft = false;
+		copter.MoveHelecoptero(copter.sizeX, 0);
+	}
+	else if (copter.extremoRight >= paredes.extremoRight && copter.paraLeft == false)
+	{
+		copter.paraLeft = true;
+		copter.MoveHelecoptero(-copter.sizeX, 0);
+	}
+
+	if (copter.paraLeft == true) copter.MoveHelecoptero(-speedl1 * 20, -speedY);
+	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
+
+	copter.Desenhahelecoptyero();
+
+
+	//movimentacao barquinho
+	if (barquinho.extremoLeft <= paredes.extremoLeft && barquinho.paraLeft == true)
+	{
+		barquinho.paraLeft = false;
+		barquinho.MoveBarco(barquinho.sizeX, 0);
+	}
+	else if (barquinho.extremoRight >= paredes.extremoRight && barquinho.paraLeft == false)
+	{
+		barquinho.paraLeft = true;
+		barquinho.MoveBarco(-barquinho.sizeX, 0);
+	}
+
+	if (barquinho.paraLeft == true)barquinho.MoveBarco(-speedl1 * 10, -speedY);
+	else if (barquinho.paraLeft == false)barquinho.MoveBarco(speedl1 * 10, -speedY);
+
+
+
+	if (barquinho.destruiu==true
+)
+	{
+		barquinho.desenhabarco();
+	}
+	
+	//testepara  colisao
+	
+	/*if (bala.px + 0.4f >= barquinho.px1 + 0.1f && bala.px + 0.4f <= barquinho.px + 0.2f) {
+		if (bala.py + 1.3f >= barquinho.py + 0.3f &&bala.py + 1.3f <= barquinho.py + 0.3f) {
+			printf("colidu primero");			
+		}
+	}
+	else {
+		if (bala.px + 0.5f >= barquinho.px1 + 0.1f && bala.px + 0.5f <=barquinho.px + 0.2f) {
+			if (bala.py + 1.3f >= bala.py + 1.4f && bala.py + 1.3f <= barquinho.py + 0.3f) {
+				printf("colidiusegundo");
+			}
+		}
+		else {
+			
+
+			if (bala.px + 0.4f >= barquinho.py + 0.1f && bala.px + 0.4f <= barquinho.px + 0.2f) {
+				if (bala.py + 1.4f >= barquinho.py + 0.3f && bala.py + 1.4f <= barquinho.py + 0.3f) {
+					printf("colidiuterceiro");
+				}
+			}
+			
+			
+			else {
+				if (bala.px + 0.5f >= barquinho.px + 0.1f && bala.px + 0.5f <= barquinho.px + 0.2f) {
+					if (bala.py + 1.4f >= barquinho.py + 0.3f && bala.py + 1.4f <= barquinho.py + 0.3f) {
+						printf("colidiu");
+					}
+				}
+			}
+		}
 	}*/
 
-	//djongador.DesenhaPlayer();
 
-	bloco01.DesenhaBloco();
+	//movimentacao gasolina
+	if (gasolina.extremodowm <= -5 && gasolina.paradowun == true)gasolina.paradowun = false;
+	else if (gasolina.extremoUP >= 5 && gasolina.paradowun == false)gasolina.paradowun = true;
+
+	if (gasolina.paradowun == true)gasolina.movecombustivel(0.0f, -speedY * 20);
+	else if (gasolina.paradowun == false)gasolina.movecombustivel(0, -speedY * 20);
+
+
+
+	//bala teste
+	if (bala.atirando == true) {
+		if (bala.tirocima <= paredes.extremoLeft && bala.atirando == true)
+		{
+			
+			bala.MoveBala(0, bala.sizeY);
+			
+		}
+		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 240);
+	}
+	
+	
+	
+	gasolina.desenhacobustivel();
+	jogador.DesenhaPlayer();
+	paredes.Desenhamuro();
+	bala.DesenhaTiro();
+	glutSpecialFunc(TeclasEspeciais);
+
+	
+	
 
 	glutSwapBuffers();
-
-	frameCount++;
-	finalTime = time(NULL);
-	if (finalTime - initialTime > 0)
-	{
-		cout << "FPS: " << frameCount / (finalTime - initialTime) << endl;
-		frameCount = 0;
-		initialTime = finalTime;
-	}
+	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
+	glutPostRedisplay();
 }
 // Inicializa aspectos do rendering
 void Scene::start()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela	
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // cor de fundo da janela
 
-	glutSwapBuffers();
+	paredes.Criamuro();
+	bala.atirando = false;
+	
+	//copter.Criahelecoptero();
+	glutPostRedisplay();
 }
-
 
 Scene::~Scene()
 {
+
 }
+
+/*Scene::Scene()
+{
+	textoPontos = "Defeated Enemies:";
+	vidas = "Lives:";
+}
+
+void Scene::Texto(const char *text, int length, int x, int y)
+{
+	glMatrixMode(GL_PROJECTION);
+	double *matrix = new double[16];
+	glGetDoublev(GL_PROJECTION_MATRIX, matrix);
+	glLoadIdentity();
+	gluOrtho2D(0, 800, 0, 600);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glPushMatrix();
+	glLoadIdentity();
+	glRasterPos2i(x, y);
+	for (int i = 0; i < length; i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)text[i]);
+	}
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixd(matrix);
+	glMatrixMode(GL_MODELVIEW);
+}*/
+

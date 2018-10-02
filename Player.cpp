@@ -2,12 +2,13 @@
 
 
 
-//void Player::CriaPlayer(float _Px1, float _Px2, float _Px3, float _Px4, float _Px5, float _Px6, float _Px7, float _Px8, float _Px9, float _Px10, float _Px11, float _Px12, float _Px13, float _Px14, float _Px15, float _Px16, float _Py1, float _Py2, float _Py3, float _Py4, float _Py5, float _Py6, float _Py7, float _Py8, float _Py9, float _Py10, float _Py11, float _Py12, float _Py13, float _Py14, float _Py15, float _Py16)
-//{
-//
-//	
-//
-//}
+void Player::CriaPlayer(float x, float y)
+{
+	Px1 += x;
+	Py1 += y;
+	
+
+}
 
 void Player::Desenhodois(float x, float y)
 {
@@ -52,34 +53,73 @@ void Player::DesenhaPlayer()
 	//parte de baixo
 	glColor3f(1.0, 1.0, 0.0);
 	glBegin(GL_LINE_LOOP);
-	glVertex2f(Px1 + 0.2f, Py1 + 0.1f);
-	glVertex2f(Px2 + 0.2f, Py2 + 0.3f);
-	glVertex2f(Px3 + 0.8f, Py3 + 0.3f);
-	glVertex2f(Px4 + 0.8f, Py4 + 0.1f);
-	glVertex2f(Px5 + 0.6f, Py5 + 0.1f);
-	glVertex2f(Px6 + 0.6f, Py6 + 0.2f);
-	glVertex2f(Px7 + 0.4f, Py7 + 0.2f);
-	glVertex2f(Px8 + 0.4f, Py8 + 0.1f);
+	glVertex2f(Px1 + 0.5f, Py1 + 0.1f);
+	glVertex2f(Px2 + 0.5f, Py2 + 0.3f);
+	glVertex2f(Px3 + 1.1f, Py3 + 0.3f);
+	glVertex2f(Px4 + 1.1f, Py4 + 0.1f);
+	glVertex2f(Px5 + 0.9f, Py5 + 0.1f);
+	glVertex2f(Px6 + 0.9f, Py6 + 0.2f);
+	glVertex2f(Px7 + 0.7f, Py7 + 0.2f);
+	glVertex2f(Px8 + 0.7f, Py8 + 0.1f);
 	glEnd();
 
 	//parte DO MEIO
 	glColor3f(1.0, 1.0, 0.0);
 	glBegin(GL_LINE_LOOP);
-	glVertex2f(Px1 + 0.2f, Py1 + 0.3f);
-	glVertex2f(Px2 + 0.3f, Py2 + 0.5f);
-	glVertex2f(Px3 + 0.3f, Py3 + 0.7f);
-	glVertex2f(Px4 + 0.7f, Py4 + 0.7f);
-	glVertex2f(Px5 + 0.7f, Py5 + 0.5f);
-	glVertex2f(Px6 + 0.8f, Py6 + 0.3f);
+	glVertex2f(Px1 + 0.5f, Py1 + 0.3f);
+	glVertex2f(Px2 + 0.6f, Py2 + 0.5f);
+	glVertex2f(Px3 + 0.6f, Py3 + 0.7f);
+	glVertex2f(Px4 + 1.0f, Py4 + 0.7f);
+	glVertex2f(Px5 + 1.0f, Py5 + 0.5f);
+	glVertex2f(Px6 + 1.1f, Py6 + 0.3f);
 	glEnd();
 
 	//parte de cima
 	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_TRIANGLES);
-	glVertex2f(Px1 + 0.3f, Py1 + 0.7f);
-	glVertex2f(Px2 + 0.5f, Py2 + 1.0f);
-	glVertex2f(Px3 + 0.7f, Py3 + 0.7f);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(Px1 + 0.6f, Py1 + 0.7f);
+	glVertex2f(Px2 + 0.6f, Py2 + 1.1f);
+	glVertex2f(Px3 + 1.0f, Py3 + 1.1f);
+	glVertex2f(Px3 + 1.0f, Py3 + 0.7f);
 	glEnd();
+
+	//asa esquerda
+	glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(Px1 + 0.0f, Py1 + 0.9f);
+	glVertex2f(Px2 + 0.2f, Py2 + 1.1f);
+	glVertex2f(Px3 + 0.6f, Py3 + 1.1f);
+	glVertex2f(Px3 + 0.6f, Py3 + 0.5f);
+	glEnd();
+
+	//asa direita
+	glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(Px1 + 1.6f, Py1 + 0.9f);
+	glVertex2f(Px2 + 1.0f, Py2 + 0.5f);
+	glVertex2f(Px3 + 1.0f, Py3 + 1.1f);
+	glVertex2f(Px3 + 1.4f, Py3 + 1.1f);
+	glEnd();
+
+	//asa canhao esquerdo
+	glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(Px1 + 0.3f, Py1 + 1.1f);
+	glVertex2f(Px2 + 0.3f, Py2 + 1.4f);
+	glVertex2f(Px3 + 0.5f, Py3 + 1.4f);
+	glVertex2f(Px3 + 0.5f, Py3 + 1.1f);
+	glEnd();
+
+	//asa canhao diureito
+	glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_LINE_LOOP);
+	glVertex2f(Px1 + 1.3f, Py1 + 1.1f);
+	glVertex2f(Px2 + 1.1f, Py2 + 1.1f);
+	glVertex2f(Px3 + 1.1f, Py3 + 1.4f);
+	glVertex2f(Px3 + 1.3f, Py3 + 1.4f);
+	glEnd();
+
+
 }
 
 Player::Player()
