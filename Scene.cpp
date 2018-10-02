@@ -227,8 +227,9 @@ void Scene::update(void)
 
 
 	//colisao bala
-	if (bala.tirocima == barquinho.extremoRight &&bala.atirando == true)
+	if (bala.tirocima >= barquinho.extremoUp )
 	{
+		
 		printf("pego");
 	}
 

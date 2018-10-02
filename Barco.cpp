@@ -48,6 +48,15 @@ void Barco::desenhabarco()
 		glVertex2f(px - 0.5f, py + 0.1f);
 		glVertex2f(px - 0.2f, py + 0.1f);
 		glEnd();
+
+		//tronco
+		glColor3f(0.74, 0.56, 0.56);
+		glBegin(GL_QUADS);
+		glVertex2f(px - 0.3f, py + 0.3f);
+		glVertex2f(px - 0.3f, py + 0.5f);
+		glVertex2f(px - 0.4f, py + 0.5f);
+		glVertex2f(px - 0.4f, py + 0.3f);
+		glEnd();
 	}
 	
 }
@@ -59,6 +68,9 @@ void Barco::MoveBarco(float _x, float _y)
 
 	if (paraLeft) extremoRight = px + 0.6;
 	else extremoRight = px - 0.1;
+
+
+	extremoUp = py + 0.1f;
 
 	sizeX = 0.5f;
 	sizeY = 0.4f;
