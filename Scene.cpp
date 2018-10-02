@@ -38,7 +38,6 @@ void Desenhos(void)
 
 	paredes.Desenhamuro();
 	copter.Desenhahelecoptyero();
-
 	barquinho.desenhabarco();
 	gasolina.desenhacobustivel();
 	jogador.DesenhaPlayer();
@@ -64,7 +63,6 @@ Scene::Scene(int argc, char **argv, string title, int width, int height)
 	// Especifica para a OpenGL que funcao deve ser chamada para geracao da imagem
 	glutDisplayFunc(update);
 	glutIdleFunc(update);
-
 
 	glutReshapeFunc(AlteraTamanhoJanela);
 	glutKeyboardFunc(GerenciaTeclado);
@@ -264,6 +262,8 @@ void Scene::update(void)
 
 	if (barquinho.paraLeft == true)barquinho.MoveBarco(-speedl1 * 10, -speedY);
 	else if (barquinho.paraLeft == false)barquinho.MoveBarco(speedl1 * 10, -speedY);
+
+
 
 	if (barquinho.destruiu==true)
 	{
