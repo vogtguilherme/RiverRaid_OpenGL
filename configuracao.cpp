@@ -8,7 +8,8 @@ Bloco cenarioBase;
 
 bool Setup()
 {
-	printf("Configurando Cena");
+	cout << "Configurando Cena" << endl;
+	cout << "..." << endl;
 	
 	//Set the viewport
 	glViewport(0.f, 0.f, LARGURA_TELA, ALTURA_TELA);
