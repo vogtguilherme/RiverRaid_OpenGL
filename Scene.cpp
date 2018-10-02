@@ -38,11 +38,12 @@ void Desenhos(void)
 
 	paredes.Desenhamuro();
 	copter.Desenhahelecoptyero();
+
 	barquinho.desenhabarco();
 	gasolina.desenhacobustivel();
 	jogador.DesenhaPlayer();
 	bala.DesenhaTiro();
-
+	
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
 	glutPostRedisplay();
@@ -216,6 +217,7 @@ void Scene::TeclasEspeciais(int tecla, int x, int y)
 	if (tecla == GLUT_KEY_LEFT) 
 	{
 		bala.atirando = true;
+		
 	}
 	glutPostRedisplay();
 }
@@ -227,11 +229,8 @@ void Scene::update(void)
 
 
 	//colisao bala
-	if (bala.tirocima >= barquinho.extremoUp )
-	{
-		
-		printf("pego");
-	}
+	
+	
 
 	//colisao do copter com a parede para se movimentar
 	if (copter.extremoLeft <= paredes.extremoLeft && copter.paraLeft == true)
@@ -266,7 +265,15 @@ void Scene::update(void)
 	if (barquinho.paraLeft == true)barquinho.MoveBarco(-speedl1 * 10, -speedY);
 	else if (barquinho.paraLeft == false)barquinho.MoveBarco(speedl1 * 10, -speedY);
 
-	barquinho.desenhabarco();
+	if (barquinho.destruiu==true)
+	{
+		barquinho.desenhabarco();
+	}
+	
+	//testepara desenhar o barco com colisao
+	
+
+
 
 	//movimentacao gasolina
 	if (gasolina.extremodowm <= -5 && gasolina.paradowun == true)gasolina.paradowun = false;
@@ -288,7 +295,6 @@ void Scene::update(void)
 		}
 		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 240);
 	}
-	
 	
 	
 	
