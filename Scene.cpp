@@ -1,9 +1,13 @@
 #include "Scene.h"
 
+#include <time.h>
+
 //vector<Object*> Scene::objetos = vector<Object*>();
 
 Player djongador;
 Cenario agua, montanhaEsquerda, montanhaDireita;
+
+int initialTime = time(NULL), finalTime, frameCount = 0;
 
 Scene::Scene(int argc, char **argv, string title, int width, int height)
 {
@@ -110,7 +114,7 @@ void Scene::update(void)
 
 	//AlteraTamanhoJanela(240, 180);	
 	//AlteraTamanhoJanela(800, 600);
-	gluOrtho2D(-1, 1, -1, 1);
+	gluOrtho2D(-5, 5, -5, 5);
 
 	/*for (int i = 0; i < objetos.size(); i++)
 	{
@@ -124,6 +128,15 @@ void Scene::update(void)
 	//djongador.DesenhaPlayer();	
 
 	glutSwapBuffers();
+
+	frameCount++;
+	finalTime = time(NULL);
+	if (finalTime - initialTime > 0)
+	{
+		cout << "FPS: " << frameCount / (finalTime - initialTime) << endl;
+		frameCount = 0;
+		initialTime = finalTime;
+	}
 }
 // Inicializa aspectos do rendering
 void Scene::start()
