@@ -25,8 +25,8 @@ Player jogador;
 Tiro bala;
 //Criação de variáveis
 //Velocidade das linhas
-float speedl1 = 0.0001f;
-float speedY = 0.0001f;
+float speedl1 = 0.00001f;
+float speedY = 0.00001f;
 void Desenhos(void)
 {
 	// Limpa a janela com a cor especificada como cor de fundo
@@ -111,7 +111,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Px14 += 0.1f;
 		jogador.Px15 += 0.1f;
 		jogador.Px16 += 0.1f;
-		bala.px += 0.1f;
+		
 		break;
 
 		//PLAYER SE MOVENDO PARA ESQUERDA
@@ -133,7 +133,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Px14 += -0.1f;
 		jogador.Px15 += -0.1f;
 		jogador.Px16 += -0.1f;
-		bala.px += -0.1f;
+		
 		break;
 
 		//MOVE PARA CIMA
@@ -155,7 +155,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Py14 += 0.1f;
 		jogador.Py15 += 0.1f;
 		jogador.Py16 += 0.1f;
-		bala.py += 0.1f;
+		
 		break;
 
 		//MOVE PARA BAIXO
@@ -177,7 +177,7 @@ void Scene::GerenciaTeclado(unsigned char key, int x, int y)
 		jogador.Py14 += -0.1f;
 		jogador.Py15 += -0.1f;
 		jogador.Py16 += -0.1f;
-		bala.py += -0.1f;
+		
 		break;
 	}
 	glutPostRedisplay();
@@ -201,19 +201,21 @@ void Teclas(int tecla, int x, int y)
 }
 void Scene::TeclasEspeciais(int tecla, int x, int y)
 {
-	if (tecla == GLUT_KEY_UP)
+	if (tecla == GLUT_KEY_UP && bala.atirando==true)
 	{
-		bala.atirando = true;	
 
+		//verificação se tiro esta ativo 
+		
+		
 		if (bala.atirando == true)
 		{
-			bala.atirando = false;
-			printf("tafunfando");
+			bala.CriaTiro(jogador);
+			
 		}
 	}
 	if (tecla == GLUT_KEY_LEFT) 
 	{
-		
+		bala.atirando = true;
 	}
 	glutPostRedisplay();
 }
@@ -223,14 +225,12 @@ void Scene::update(void)
 	glLoadIdentity();
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	/*for (int i = 0; i < objetos.size(); i++)
-	{
-		objetos[i]->draw();
-	}*/
 
-	//movimentação copter
-	/*if (copter.extremoRight <= -5 && copter.paraLeft == true) copter.paraLeft = false;
-	else if (copter.extremoLeft >= 5 && copter.paraLeft == false) copter.paraLeft = true;*/
+	//colisao bala
+	if (bala.tirocima == barquinho.extremoRight &&bala.atirando == true)
+	{
+		printf("pego");
+	}
 
 	//colisao do copter com a parede para se movimentar
 	if (copter.extremoLeft <= paredes.extremoLeft && copter.paraLeft == true)
@@ -280,19 +280,25 @@ void Scene::update(void)
 	if (bala.atirando == true) {
 		if (bala.tirocima <= paredes.extremoLeft && bala.atirando == true)
 		{
+			
+			
 			bala.atirando = false;
 			bala.MoveBala(0, bala.sizeY);
 		}
-		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 10);
+		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 240);
 	}
 	
-
-	glutSpecialFunc(TeclasEspeciais);
-
+	
+	
+	
 	gasolina.desenhacobustivel();
 	jogador.DesenhaPlayer();
 	paredes.Desenhamuro();
 	bala.DesenhaTiro();
+	glutSpecialFunc(TeclasEspeciais);
+
+	
+	
 
 	glutSwapBuffers();
 	//função que solicita o redesenho da DesenhaCena, incorporando as modificações de variáveis
@@ -305,6 +311,7 @@ void Scene::start()
 
 	paredes.Criamuro();
 	bala.atirando = false;
+	
 	//copter.Criahelecoptero();
 	glutPostRedisplay();
 }

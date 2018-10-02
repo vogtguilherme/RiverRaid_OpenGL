@@ -2,11 +2,11 @@
 
 
 
-void Tiro::CriaTiro(float x, float y)
+void Tiro::CriaTiro(Player player)
 {
 
-	px =0.4f+ x;
-	py = 1.3f+y;
+	px=player.Px1+ 0.0f ;
+	py =player.Py1 +0.0f;
 
 }
 
@@ -15,13 +15,17 @@ void Tiro::DesenhaTiro()
 
 	if (atirando)
 	{
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_LINE_LOOP);
+		glColor3f(1.0, 0.15, 0.25);
+		glBegin(GL_QUADS);
 		glVertex2f(px + 0.4f, py + 1.3f);
 		glVertex2f(px + 0.4f, py + 1.4f);
 		glVertex2f(px + 0.5f, py + 1.4f);
 		glVertex2f(px + 0.5f, py + 1.3f);
 		glEnd();
+	}
+	else
+	{
+
 	}
 }
 
@@ -34,6 +38,15 @@ void Tiro::MoveBala(float x,float y)
 
 	py += y;
 }
+
+void Tiro::Colisao(Helicoptero _helicoptero, Barco _barco)
+{
+
+
+
+}
+
+
 
 Tiro::Tiro()
 {
