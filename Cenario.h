@@ -25,7 +25,7 @@ public:
 
 	vector<posicoes> pontos;
 	void addVertex(float x, float y);
-	void desenharElemento(int vertices, float red, float green, float blue);
+	void desenharElemento(float red, float green, float blue);
 
 	/*void desenhaRetangulo();
 	void desenhaTriangulo();

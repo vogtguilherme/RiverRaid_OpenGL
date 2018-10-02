@@ -13,17 +13,14 @@ void Cenario::addVertex(float x, float y)
 	pontos.push_back(posicoes(x, y));
 }
 
-void Cenario::desenharElemento(int vertices, float red, float green, float blue)
+void Cenario::desenharElemento(float red, float green, float blue)
 {
 	glPushMatrix();
 
 	glColor3f(red, green, blue);
-	if (vertices == 4)
-		glBegin(GL_POLYGON);
-	else if (vertices == 3)
-		glBegin(GL_TRIANGLES);
-	else
-		glBegin(GL_LINE);
+	
+	glBegin(GL_POLYGON);
+
 	for (int i = 0; i < pontos.size(); i++)
 	{
 		glVertex2f(pontos[i].x, pontos[i].y);
