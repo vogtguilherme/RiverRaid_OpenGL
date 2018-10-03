@@ -14,8 +14,8 @@ Jato::Jato()
 
 	deslocarElemento(0.0f, -4.5f);
 
-	collider.addVertex(-.25f, 1.f);
-	collider.addVertex(.25f, 1.f);
+	collider.addVertex(-.05f, 1.f);
+	collider.addVertex(.05f, 1.f);
 	collider.addVertex(.25f, 0.f);
 	collider.addVertex(-.25f, 0.f);
 

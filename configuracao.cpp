@@ -88,6 +88,7 @@ void Render()
 	obj2.desenharElemento(0.f, 1.f, 1.f, 1.f);
 
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
+	//player.collider.desenharElemento(0.5f, 0.5f, 0.5f, 1.f);
 
 	//DebugFPS
 	FrameCount();
