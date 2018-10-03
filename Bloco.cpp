@@ -25,6 +25,9 @@ void Bloco::CriarBordasCenario()
 	montanhaDireita.addVertex(5.0, 10.0f);
 	montanhaDireita.addVertex(5.0, -10.0f);
 	montanhaDireita.addVertex(4.0, -10.0f);
+
+	extremoLeft = -3.8f;
+	extremoRight = 3.8f;
 }
 
 void Bloco::DesenhaBloco()

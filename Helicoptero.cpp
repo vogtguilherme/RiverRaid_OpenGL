@@ -1,6 +1,5 @@
 #include "Helicoptero.h"
-#include "GL\glew.h"
-#include "GL\freeglut.h"
+
 void Helicoptero::Criahelecoptero(float _x, float _y)
 {
 	Px1 = 0.3f + _x;
@@ -148,6 +147,24 @@ void Helicoptero::MoveHelecoptero(float _x, float _y)
 	Py13 += _y;
 	Py14 += _y;
 	Py15 += _y;
+}
+
+void Helicoptero::detectou(Bloco colisao, float velocidade)
+{
+
+	if (extremoLeft <= colisao.extremoLeft && paraLeft == true)
+	{
+		paraLeft = false;
+		MoveHelecoptero(sizeX, 0);
+	}
+	else if (extremoRight >= colisao.extremoRight && paraLeft == false)
+	{
+		paraLeft = true;
+		MoveHelecoptero(-sizeX, 0);
+	}
+
+	if (paraLeft == true) MoveHelecoptero(-velocidade * 1.5, 0);
+	else if (paraLeft == false) MoveHelecoptero(velocidade * 1.5, 0);
 }
 
 Helicoptero::Helicoptero()

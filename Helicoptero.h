@@ -1,4 +1,6 @@
 #pragma once
+#include"Bloco.h"
+
 class Helicoptero
 {
 
@@ -16,6 +18,7 @@ public:
 	void Desenhahelecoptyero();
 	void Helicoptero::MoveHelecoptero(float _x, float _y);
 
+	void  detectou(Bloco colisao, float velocidade);
 
 
 	Helicoptero();
