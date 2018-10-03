@@ -7,6 +7,8 @@ void Barco::CriaBarco(float _x, float _y)
 	px = _x;
 	py = _y;	
 
+	cout << "SUMIU????" << endl;
+
 }
 void Barco::desenhabarco()
 {

@@ -1,4 +1,5 @@
 #include "configuracao.h"
+#include <ctime>
 
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
@@ -61,9 +62,11 @@ void Start()
 
 	cameraPosY = cameraY;
 
-	navio.CriaBarco(1.5, 4.5);
+	navio.CriaBarco(3, 6);
 	
-	coptero.Criahelecoptero(1.5, 4.5);
+	coptero.Criahelecoptero(-1.5, 5);
+
+	std::srand(std::time(nullptr));
 }
 
 void Render()
@@ -140,12 +143,16 @@ void Update()
 		coptero.Colider.deslocarElemento(velocidadeMovimento*1.5, 0);
 	}
 	
+	int random_variable = std::rand() % 8;
 
 	//Movimentacao barquinho
 	navio.detectar(cenarioBase, velocidadeMovimento);
-
+	
+	if (navio.extremoUP < cameraPosY - 4) navio.CriaBarco(random_variable -4, random_variable + cameraPosY + 5 + 0.5f);
 	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
+
+	if (coptero.extremoUP < cameraPosY - 4) coptero.Criahelecoptero(random_variable -4, random_variable + cameraPosY + 5 + 0.7f);
 
 	if (player.collider.detectarColisao(cenarioBase.montanhaDireita))
 	{
