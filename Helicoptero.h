@@ -21,6 +21,8 @@ public:
 	void Desenhahelecoptyero();
 	void Helicoptero::MoveHelecoptero(float _x, float _y);
 
+	bool destruiu = false;
+
 	void  detectou(Bloco colisao, float velocidade);
 
 

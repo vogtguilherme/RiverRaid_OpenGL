@@ -12,7 +12,7 @@ public:
 	Objeto colisor;
 	float extremoLeft, extremoRight,extremoUP,extremoDown;
 	bool paraLeft = true;
-	bool destruiu=true;
+	bool destruiu = false;
 	float px, py;
 	float sizeX, sizeY;
 	void CriaBarco(float x, float y);

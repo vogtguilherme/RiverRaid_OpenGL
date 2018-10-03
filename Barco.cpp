@@ -7,10 +7,14 @@ void Barco::CriaBarco(float _x, float _y)
 	px = _x;
 	py = _y;	
 
+	cout << "SUMIU????" << endl;
+
+	destruiu = false;
+
 }
 void Barco::desenhabarco()
 {
-	if (destruiu)
+	if (!destruiu)
 	{
 		if (paraLeft)
 		{

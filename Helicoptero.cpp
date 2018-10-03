@@ -6,75 +6,81 @@ void Helicoptero::Criahelecoptero(float _x, float _y)
 	
 	py =  _y;
 	
+	destruiu = false;
+
 }
 void Helicoptero::Desenhahelecoptyero()
 {
-	if (paraLeft)
+	if (!destruiu)
 	{
-		//helice
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_QUADS);
-		glVertex2f(px + 0.1f, py + 0.5f);
-		glVertex2f(px + 0.1f, py + 0.7f);
-		glVertex2f(px + 1.0f, py + 0.7f);
-		glVertex2f(px + 1.0f, py + 0.5f);
-		glEnd();
+		if (paraLeft)
+		{
+			//helice
+			glColor3f(1.0, 1.0, 0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(px + 0.1f, py + 0.5f);
+			glVertex2f(px + 0.1f, py + 0.7f);
+			glVertex2f(px + 1.0f, py + 0.7f);
+			glVertex2f(px + 1.0f, py + 0.5f);
+			glEnd();
 
-		//tronco
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_QUADS);
-		glVertex2f(px + 0.5f, py + 0.3f);
-		glVertex2f(px + 0.5f, py + 0.5f);
-		glVertex2f(px + 0.6f, py + 0.5f);
-		glVertex2f(px + 0.6f, py + 0.3f);
-		glEnd();
+			//tronco
+			glColor3f(1.0, 1.0, 0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(px + 0.5f, py + 0.3f);
+			glVertex2f(px + 0.5f, py + 0.5f);
+			glVertex2f(px + 0.6f, py + 0.5f);
+			glVertex2f(px + 0.6f, py + 0.3f);
+			glEnd();
 
-		//corpo
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_QUADS);
-		glVertex2f(px + 0.3f, py + 0.1f);
-		glVertex2f(px + 0.3f, py + 0.3f);
-		glVertex2f(px + 1.0f, py + 0.3f);
-		glVertex2f(px + 1.0f, py + 0.1f);
-		glVertex2f(px + 0.8f, py + 0.1f);
-		glVertex2f(px + 0.7f, py + 0.0f);
-		glVertex2f(px + 0.4f, py + 0.0f);
-		glVertex2f(px + 0.3f, py + 0.1f);
-		glEnd();
+			//corpo
+			glColor3f(1.0, 1.0, 0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(px + 0.3f, py + 0.1f);
+			glVertex2f(px + 0.3f, py + 0.3f);
+			glVertex2f(px + 1.0f, py + 0.3f);
+			glVertex2f(px + 1.0f, py + 0.1f);
+			glVertex2f(px + 0.8f, py + 0.1f);
+			glVertex2f(px + 0.7f, py + 0.0f);
+			glVertex2f(px + 0.4f, py + 0.0f);
+			glVertex2f(px + 0.3f, py + 0.1f);
+			glEnd();
+		}
+		else
+		{
+			//helice
+			glColor3f(1.0, 1.0, 0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(px - 0.1f, py + 0.5f);
+			glVertex2f(px - 0.1f, py + 0.7f);
+			glVertex2f(px - 1.0f, py + 0.7f);
+			glVertex2f(px - 1.0f, py + 0.5f);
+			glEnd();
+
+			//tronco
+			glColor3f(1.0, 1.0, 0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(px - 0.5f, py + 0.3f);
+			glVertex2f(px - 0.5f, py + 0.5f);
+			glVertex2f(px - 0.6f, py + 0.5f);
+			glVertex2f(px - 0.6f, py + 0.3f);
+			glEnd();
+
+			//corpo
+			glColor3f(1.0, 1.0, 0.0);
+			glBegin(GL_QUADS);
+			glVertex2f(px - 0.3f, py + 0.1f);
+			glVertex2f(px - 0.3f, py + 0.3f);
+			glVertex2f(px - 1.0f, py + 0.3f);
+			glVertex2f(px - 1.0f, py + 0.1f);
+			glVertex2f(px - 0.8f, py + 0.1f);
+			glVertex2f(px - 0.7f, py + 0.0f);
+			glVertex2f(px - 0.4f, py + 0.0f);
+			glVertex2f(px - 0.3f, py + 0.1f);
+			glEnd();
+		}
 	}
-	else
-	{		
-		//helice
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_QUADS);
-		glVertex2f(px - 0.1f, py + 0.5f);
-		glVertex2f(px - 0.1f, py + 0.7f);
-		glVertex2f(px - 1.0f, py + 0.7f);
-		glVertex2f(px - 1.0f, py + 0.5f);
-		glEnd();
-
-		//tronco
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_QUADS);
-		glVertex2f(px - 0.5f, py + 0.3f);
-		glVertex2f(px - 0.5f, py + 0.5f);
-		glVertex2f(px - 0.6f, py + 0.5f);
-		glVertex2f(px - 0.6f, py + 0.3f);
-		glEnd();
-
-		//corpo
-		glColor3f(1.0, 1.0, 0.0);
-		glBegin(GL_QUADS);
-		glVertex2f(px - 0.3f, py + 0.1f);
-		glVertex2f(px - 0.3f, py + 0.3f);
-		glVertex2f(px - 1.0f, py + 0.3f);
-		glVertex2f(px - 1.0f, py + 0.1f);
-		glVertex2f(px - 0.8f, py + 0.1f);
-		glVertex2f(px - 0.7f, py + 0.0f);
-		glVertex2f(px - 0.4f, py + 0.0f);
-		glVertex2f(px - 0.3f, py + 0.1f);
-		glEnd();
-	}
+	
 }
 
 void Helicoptero::MoveHelecoptero(float _x, float _y)
