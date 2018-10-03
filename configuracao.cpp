@@ -4,7 +4,7 @@ int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
 float uai = 0.f;
 
-GLfloat velocidadeMovimento = 0.05f;
+GLfloat velocidadeMovimento = 0.025f;
 
 GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
@@ -116,7 +116,8 @@ void Update()
 	glLoadIdentity();
 
 	//Move camera to position
-	glTranslatef(0.f, (cameraY + cameraPosY) * -.05f, 0.f);	
+	glTranslatef(0.f, (cameraY - cameraPosY), 0.f);
+	obj2.deslocarElemento(0.f, velocidadeMovimento);
 
 	obj2.detectarColisao(objTeste);
 
@@ -131,7 +132,7 @@ void Input(unsigned char key, int x, int y)
 	//Se a tecla for W o Jato deve avançar mais rapidamente, e a câmera subir junto
 	if (key == 'w')
 	{
-		cameraY -= .5f;
+		cameraY += 1.5f;
 	}
 	else if (key == 's')
 	{
@@ -140,13 +141,13 @@ void Input(unsigned char key, int x, int y)
 	else if (key == 'a')
 	{
 		//cameraX -= 1.f;
-		obj2.deslocarElemento(-.5f, 0);
+		obj2.deslocarElemento(-.1f, 0);
 		uai -= .1f;
 	}
 	else if (key == 'd')
 	{
 		//cameraX += 1.f;
-		obj2.deslocarElemento(.5f, 0);
+		obj2.deslocarElemento(.1f, 0);
 		uai += .1f;
 	}	
 
