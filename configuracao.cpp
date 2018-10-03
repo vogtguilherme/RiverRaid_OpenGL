@@ -82,7 +82,8 @@ void Render()
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
 	player.collider.desenharElemento(1.f, 1.f, 1.f, 0.1f);
 
-
+	//coptero.Colider.desenharElemento(0.75, 0.75, 0.75, 0);
+	//navio.colisor.desenharElemento(0.75, 0.75, 0.75, 0);
 	if (tiro.atirando)
 		tiro.MoveBala(0, 0.5f);
 
@@ -113,6 +114,28 @@ void Update()
 
 	hud.deslocarElemento(0.f, velocidadeMovimento);
 
+
+	//detectar colisao com a nave e o barco
+	if (navio.paraLeft == true) 
+	{
+		navio.colisor.deslocarElemento(-velocidadeMovimento, 0);
+	}
+	else if(navio.paraLeft==false)
+	{
+		navio.colisor.deslocarElemento(velocidadeMovimento, 0);
+	}
+	
+
+	//detectacolisao com o coptero
+	if (coptero.paraLeft == true){
+		coptero.Colider.deslocarElemento(-velocidadeMovimento*1.5, 0);
+	}
+	else if(coptero.paraLeft==false)
+	{
+		coptero.Colider.deslocarElemento(velocidadeMovimento*1.5, 0);
+	}
+	
+
 	//Movimentacao barquinho
 	navio.detectar(cenarioBase, velocidadeMovimento);
 	
@@ -129,6 +152,10 @@ void Update()
 	else
 		player.colisaoDetectada = false;
 
+	player.collider.detectarColisao(coptero.Colider);
+	player.collider.detectarColisao(navio.colisor);
+	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
+	player.collider.detectarColisao(cenarioBase.montanhaDireita);
 	if (player.colisaoDetectada)
 	{
 		player.ResetarJato(cameraPosY);

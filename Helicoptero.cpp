@@ -169,6 +169,13 @@ void Helicoptero::detectou(Bloco colisao, float velocidade)
 
 Helicoptero::Helicoptero()
 {
+
+	Colider.addVertex(0.0f,0.8f);
+	Colider.addVertex(1.1f,0.8f);
+	Colider.addVertex(1.1f,0.0);
+	Colider.addVertex(0.0f,0.1f);
+
+
 }
 
 

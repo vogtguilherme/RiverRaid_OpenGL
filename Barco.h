@@ -1,11 +1,15 @@
 #pragma once
 #include"bibliotecas.h"
 #include "Bloco.h"
+#include "Objeto.h"
+
 class Barco
 {
+	
 
 
 public:
+	Objeto colisor;
 	float extremoLeft, extremoRight;
 	bool paraLeft = true;
 	bool destruiu=true;
