@@ -1,6 +1,5 @@
 #include "Barco.h"
-#include "GL\glew.h"
-#include "GL\freeglut.h"
+
 
 
 void Barco::CriaBarco(float _x, float _y)
@@ -85,6 +84,24 @@ void Barco::MoveBarco(float _x, float _y)
 	px += _x;
 
 	py += _y;
+}
+
+void Barco::detectar(Bloco colisao,float velocidade)
+{
+	if (extremoLeft <= colisao.extremoLeft && paraLeft == true)
+	{
+		paraLeft = false;
+		MoveBarco(sizeX, 0);
+	}
+	else if (extremoRight >= colisao.extremoRight && paraLeft == false)
+	{
+		paraLeft = true;
+		MoveBarco(-sizeX, 0);
+	}
+
+	if (paraLeft == true)MoveBarco(-velocidade * 1.0, 0);
+	else if (paraLeft == false)MoveBarco(velocidade * 1.0, 0);
+
 }
 
 

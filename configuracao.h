@@ -3,7 +3,9 @@
 #include <time.h>
 
 #include "bibliotecas.h"
-
+#include"Aviao.h"
+#include"Helicoptero.h"
+#include"Barco.h"
 #include "Bloco.h"
 #include "Player.h"
 #include "Jato.h"
@@ -16,6 +18,7 @@
 const int LARGURA_TELA = 800;
 const int ALTURA_TELA = 600;
 const int FPS = 60;
+
 
 bool Setup();
 

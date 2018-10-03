@@ -231,19 +231,7 @@ void Scene::update(void)
 	
 
 	//colisao do copter com a parede para se movimentar
-	if (copter.extremoLeft <= paredes.extremoLeft && copter.paraLeft == true)
-	{
-		copter.paraLeft = false;
-		copter.MoveHelecoptero(copter.sizeX, 0);
-	}
-	else if (copter.extremoRight >= paredes.extremoRight && copter.paraLeft == false)
-	{
-		copter.paraLeft = true;
-		copter.MoveHelecoptero(-copter.sizeX, 0);
-	}
-
-	if (copter.paraLeft == true) copter.MoveHelecoptero(-speedl1 * 20, -speedY);
-	else if (copter.paraLeft == false) copter.MoveHelecoptero(speedl1 * 20, -speedY);
+	
 
 	copter.Desenhahelecoptyero();
 

@@ -1,5 +1,6 @@
 #pragma once
-
+#include"bibliotecas.h"
+#include "Bloco.h"
 class Barco
 {
 
@@ -15,7 +16,8 @@ public:
 	void desenhabarco();
 	
 	void Barco::MoveBarco(float _x, float _y);
-	
+
+	void detectar(Bloco colisao, float velocidade);
 	//void Animacao(int valor);
 
 

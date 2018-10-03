@@ -3,15 +3,14 @@
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
 GLfloat velocidadeMovimento = 0.025f;
-
 GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
-
 Bloco cenarioBase;
 Objeto objTeste, obj2;
-
-//Player player;
+Barco navio;
+Helicoptero coptero;
 Jato player;
+
 
 bool Setup()
 {
@@ -83,12 +82,15 @@ void Render()
 
 	cenarioBase.DesenhaBloco();
 
-	objTeste.desenharElemento(0.8f, 0.f, 0.f, 1.f);
+	/*objTeste.desenharElemento(0.8f, 0.f, 0.f);
 	
-	obj2.desenharElemento(0.f, 1.f, 1.f, 1.f);
+	obj2.desenharElemento(0.f, 1.f, 1.f);*/
 
+	//player.DesenhaPlayer();
+	
+	navio.desenhabarco();
+	coptero.Desenhahelecoptyero();
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
-	//player.collider.desenharElemento(0.5f, 0.5f, 0.5f, 1.f);
 
 	//DebugFPS
 	FrameCount();
@@ -110,7 +112,13 @@ void Update()
 	player.deslocarElemento(0.f, velocidadeMovimento);
 	player.collider.deslocarElemento(0.f, velocidadeMovimento);
 
-	//obj2.detectarColisao(player.colisor);
+	//obj2.detectarColisao(objTeste);
+
+
+	//movimentacao barquinho
+	navio.detectar(cenarioBase, velocidadeMovimento);
+	
+	coptero.detectou(cenarioBase, velocidadeMovimento);
 
 	player.collider.detectarColisao(cenarioBase.montanhaDireita);
 	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
@@ -123,7 +131,7 @@ void Input(unsigned char key, int x, int y)
 {		
 	//Comportamentos diferentes para cada tecla que o jogador pressionar
 
-	//Se a tecla for W o Jato deve avançar mais rapidamente, e a câmera subir junto
+	//Se a tecla for W o Jato deve avanï¿½ar mais rapidamente, e a cï¿½mera subir junto
 	if (key == 'w')
 	{
 		//cameraY += 1.5f;

@@ -5,6 +5,8 @@
 class Bloco
 {
 public:
+	float extremoLeft, extremoRight;
+
 	Bloco();
 	~Bloco();
 
