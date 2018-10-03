@@ -6,6 +6,7 @@
 
 #include "Bloco.h"
 #include "Player.h"
+#include "Jato.h"
 #include "Objeto.h"
 
 #ifndef CONFIGURACAO_H

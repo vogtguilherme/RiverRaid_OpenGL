@@ -2,8 +2,6 @@
 
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
-float uai = 0.f;
-
 GLfloat velocidadeMovimento = 0.025f;
 
 GLfloat cameraX, cameraY;
@@ -12,7 +10,8 @@ GLfloat cameraPosY;
 Bloco cenarioBase;
 Objeto objTeste, obj2;
 
-Player player;
+//Player player;
+Jato player;
 
 bool Setup()
 {
@@ -57,17 +56,12 @@ void Start()
 	objTeste.addVertex(2.5f, -4.f);
 	objTeste.addVertex(-2.5f, -4.f);
 
-	/*obj2.addVertex(uai + 0.f, uai + 2.f);
-	obj2.addVertex(uai + 0.5f, uai + 0.f);
-	obj2.addVertex(uai + 0.f, uai + 0.35f);
-	obj2.addVertex(uai + (-0.5f), uai +0.f);*/
-
-	obj2.addVertex(0.f, 2.f);
+	/*obj2.addVertex(0.f, 2.f);
 	obj2.addVertex(0.5f, 0.f);
 	obj2.addVertex(0.f, 0.35f);
-	obj2.addVertex(-0.5f, 0.f);
+	obj2.addVertex(-0.5f, 0.f);*/
 
-	obj2.deslocarElemento(0.f, -4.5f);
+	//obj2.deslocarElemento(0.f, -4.5f);
 
 	cameraPosY = cameraY;
 }
@@ -89,11 +83,11 @@ void Render()
 
 	cenarioBase.DesenhaBloco();
 
-	objTeste.desenharElemento(0.8f, 0.f, 0.f);
+	objTeste.desenharElemento(0.8f, 0.f, 0.f, 1.f);
 	
-	obj2.desenharElemento(0.f, 1.f, 1.f);
+	obj2.desenharElemento(0.f, 1.f, 1.f, 1.f);
 
-	player.DesenhaPlayer();
+	player.desenharElemento(1.f, .75f,.0f, 1.f);
 
 	contagemFrames++;
 	tempoFinal = time(NULL);
@@ -119,9 +113,13 @@ void Update()
 
 	//Move camera to position
 	glTranslatef(0.f, (cameraY - cameraPosY), 0.f);
-	obj2.deslocarElemento(0.f, velocidadeMovimento);
+	player.deslocarElemento(0.f, velocidadeMovimento);
+	player.collider.deslocarElemento(0.f, velocidadeMovimento);
 
-	obj2.detectarColisao(objTeste);
+	//obj2.detectarColisao(player.colisor);
+
+	player.collider.detectarColisao(cenarioBase.montanhaDireita);
+	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
@@ -134,23 +132,21 @@ void Input(unsigned char key, int x, int y)
 	//Se a tecla for W o Jato deve avançar mais rapidamente, e a câmera subir junto
 	if (key == 'w')
 	{
-		cameraY += 1.5f;
+		//cameraY += 1.5f;
 	}
 	else if (key == 's')
 	{
-		cameraY += .025f;
+		//cameraY += .025f;
 	}
 	else if (key == 'a')
-	{
-		//cameraX -= 1.f;
-		obj2.deslocarElemento(-.1f, 0);
-		uai -= .1f;
+	{		
+		player.deslocarElemento(-.1f, 0);
+		player.collider.deslocarElemento(-.1f, 0);
 	}
 	else if (key == 'd')
-	{
-		//cameraX += 1.f;
-		obj2.deslocarElemento(.1f, 0);
-		uai += .1f;
+	{		
+		player.deslocarElemento(.1f, 0);
+		player.collider.deslocarElemento(.1f, 0);
 	}	
 
 	//Take saved matrix off the stack and reset it

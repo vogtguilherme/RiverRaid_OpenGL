@@ -23,7 +23,7 @@ public:
 	vector<posicoes> pontos;
 	
 	void addVertex(float x, float y);
-	void desenharElemento(float red, float green, float blue);
+	void desenharElemento(float red, float green, float blue, float alpha);
 
 	void detectarColisao(Objeto objeto);
 	void debugPosicoesVertices();
