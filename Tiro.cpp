@@ -1,4 +1,5 @@
 #include "Tiro.h"
+#include "Aviao.h"
 
 void Tiro::CriaTiro(Jato player)
 {
@@ -26,7 +27,7 @@ void Tiro::DesenhaTiro()
 		
 		glEnd();
 
-		collider.desenharElemento(1.0f, 1.0f, 1.0f, 1.0f);
+		//collider.desenharElemento(1.0f, 1.0f, 0.0f, 1.0f);
 	}	
 }
 
@@ -39,15 +40,12 @@ void Tiro::MoveBala(float x,float y)
 
 	py += y;
 
-	collider.deslocarElemento(0, y);
+	ResetarPosicao();
+	collider.deslocarElemento(px, py);
 }
 
 void Tiro::Colisao(Helicoptero _helicoptero, Barco _barco)
-{
-	if (atirando)
-	{
-		
-	}
+{	
 }
 
 
@@ -58,6 +56,14 @@ Tiro::Tiro()
 	collider.addVertex(px + 0.15f / 2, py + 0.5f / 2);
 	collider.addVertex(px + 0.15f / 2, py + 0.0f / 2);
 	collider.addVertex(px + 0.0f / 2, py + 0.0f / 2);
+}
+
+void Tiro::ResetarPosicao()
+{
+	for (int i = 0; i < collider.pontos.size(); i++)
+	{
+		collider.pontos[i].x = collider.pontosIniciais[i].x, collider.pontos[i].y = collider.pontosIniciais[i].y;
+	}		
 }
 
 

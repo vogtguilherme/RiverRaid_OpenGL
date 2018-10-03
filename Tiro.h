@@ -24,5 +24,6 @@ public:
 	Objeto collider;
 	
 	Tiro();
+	void ResetarPosicao();
 	~Tiro();
 };

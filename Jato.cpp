@@ -41,7 +41,7 @@ int Jato::getVidas()
 
 void Jato::setVida(int value)
 {
-	vidas = value;
+	vidas -= value;
 }
 
 void Jato::RegistrarPosInicial(float x, float y)
@@ -69,15 +69,17 @@ void Jato::ResetarJato(float yPos)
 
 	for (int i = 0; i < pontos.size(); i++)
 	{
-		pontos[i].x = posInicial[i].x, pontos[i].y = posInicial[i].y + yPos/2;
+		pontos[i].x = posInicial[i].x, pontos[i].y = posInicial[i].y + yPos - 3.5f;
 	}
 
 	for (int i = 0; i < pontos.size(); i++)
 	{
-		collider.pontos[i].x = colisorPosInicial[i].x, collider.pontos[i].y = colisorPosInicial[i].y + yPos/2;
+		collider.pontos[i].x = colisorPosInicial[i].x, collider.pontos[i].y = colisorPosInicial[i].y + yPos - 3.5f;
 	}
 
 	//collider.deslocarElemento(0.0f, yPos);
 
 	colisaoDetectada = false;
+
+	setVida(1);
 }
