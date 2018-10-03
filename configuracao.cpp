@@ -5,14 +5,14 @@ int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 float uai = 0.f;
 
 GLfloat velocidadeMovimento = 0.025f;
-
 GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
-
 Bloco cenarioBase;
 Objeto objTeste, obj2;
-
 Player player;
+Barco navio;
+Helicoptero coptero;
+
 
 bool Setup()
 {
@@ -89,11 +89,15 @@ void Render()
 
 	cenarioBase.DesenhaBloco();
 
-	objTeste.desenharElemento(0.8f, 0.f, 0.f);
+	/*objTeste.desenharElemento(0.8f, 0.f, 0.f);
 	
-	obj2.desenharElemento(0.f, 1.f, 1.f);
+	obj2.desenharElemento(0.f, 1.f, 1.f);*/
 
-	player.DesenhaPlayer();
+	//player.DesenhaPlayer();
+	
+	navio.desenhabarco();
+	coptero.Desenhahelecoptyero();
+
 
 	contagemFrames++;
 	tempoFinal = time(NULL);
@@ -121,7 +125,13 @@ void Update()
 	glTranslatef(0.f, (cameraY - cameraPosY), 0.f);
 	obj2.deslocarElemento(0.f, velocidadeMovimento);
 
-	obj2.detectarColisao(objTeste);
+	//obj2.detectarColisao(objTeste);
+
+
+	//movimentacao barquinho
+	navio.detectar(cenarioBase, velocidadeMovimento);
+	
+	coptero.detectou(cenarioBase, velocidadeMovimento);
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
