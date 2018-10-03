@@ -57,12 +57,10 @@ int main(int argc, char* args[])
 }
 
 void runMainLoop(int val)
-{
+{	
+	Render();	
 	//Frame logic
 	Update();
-	//update();
-	Render();
-	//render();
 
 	//Run frame one more time
 	glutTimerFunc(1000 / FPS, runMainLoop, val);

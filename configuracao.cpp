@@ -8,6 +8,9 @@ GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
 
 Bloco cenarioBase;
+Cenario objTeste, obj2;
+
+Player player;
 
 bool Setup()
 {
@@ -47,6 +50,18 @@ void Start()
 {	
 	cout << "Start" << endl;
 
+	float uai = 2.f;
+
+	objTeste.addVertex(-2.f, 3.f);
+	objTeste.addVertex(2.f, 3.f);
+	objTeste.addVertex(2.5f, -4.f);
+	objTeste.addVertex(-2.5f, -4.f);
+
+	obj2.addVertex(uai + 0.f, uai + 1.f);
+	obj2.addVertex(uai + 1.f, uai + 1.f);
+	obj2.addVertex(uai + 1.f, uai +(-1.f));
+	obj2.addVertex(uai + 0.f, uai +(-1.f));
+
 	cameraPosY = cameraY;
 }
 
@@ -66,6 +81,12 @@ void Render()
 	//glTranslatef(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f, 0.f);
 
 	cenarioBase.DesenhaBloco();
+
+	objTeste.desenharElemento(0.8f, 0.f, 0.f);
+	
+	obj2.desenharElemento(0.f, 1.f, 1.f);
+
+	player.DesenhaPlayer();
 
 	contagemFrames++;
 	tempoFinal = time(NULL);
@@ -90,7 +111,9 @@ void Update()
 	glLoadIdentity();
 
 	//Move camera to position
-	glTranslatef(0.f, cameraY + cameraPosY, 0.f);
+	//glTranslatef(0.f, (cameraY + cameraPosY) * -1.f, 0.f);
+
+	obj2.detectarColisao(objTeste);
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
@@ -103,7 +126,7 @@ void Input(unsigned char key, int x, int y)
 	//Se a tecla for W o Jato deve avançar mais rapidamente, e a câmera subir junto
 	if (key == 'w')
 	{
-		cameraY -= 1.f;
+		cameraY -= 1.f;		
 	}
 	else if (key == 's')
 	{

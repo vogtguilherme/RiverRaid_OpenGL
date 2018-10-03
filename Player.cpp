@@ -65,7 +65,7 @@ void Player::DesenhaPlayer()
 
 	//parte DO MEIO
 	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glBegin(GL_POLYGON);
 	glVertex2f(Px1 + 0.5f, Py1 + 0.3f);
 	glVertex2f(Px2 + 0.6f, Py2 + 0.5f);
 	glVertex2f(Px3 + 0.6f, Py3 + 0.7f);

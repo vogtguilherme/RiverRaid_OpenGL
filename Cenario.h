@@ -2,10 +2,6 @@
 
 #include "bibliotecas.h"
 
-#include <vector>
-
-using namespace std;
-
 struct posicoes
 {
 	float x;
@@ -25,8 +21,14 @@ public:
 	~Cenario();
 
 	vector<posicoes> pontos;
+	
 	void addVertex(float x, float y);
 	void desenharElemento(float red, float green, float blue);
+
+	void detectarColisao(Cenario objeto);
+	void debugPosicoesVertices();
+
+	void deslocarElemento(float eixoX, float eixoY);
 
 	/*void desenhaRetangulo();
 	void desenhaTriangulo();
