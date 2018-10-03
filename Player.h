@@ -1,7 +1,9 @@
 #pragma once
 #include "bibliotecas.h"
+#include "Objeto.h"
 
 class Player
+	: public Objeto
 {
 public:
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Cenario.h"
+#include "Objeto.h"
 
 class Bloco
 {
@@ -13,6 +13,6 @@ private:
 	
 	void CriarBordasCenario();
 
-	Cenario agua;
-	Cenario montanhaEsquerda, montanhaDireita;
+	Objeto agua;
+	Objeto montanhaEsquerda, montanhaDireita;
 };

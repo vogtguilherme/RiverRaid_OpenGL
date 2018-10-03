@@ -14,18 +14,18 @@ struct posicoes
 	}
 };
 
-class Cenario
+class Objeto
 {
 public:
-	Cenario();
-	~Cenario();
+	Objeto();
+	~Objeto();
 
 	vector<posicoes> pontos;
 	
 	void addVertex(float x, float y);
 	void desenharElemento(float red, float green, float blue);
 
-	void detectarColisao(Cenario objeto);
+	void detectarColisao(Objeto objeto);
 	void debugPosicoesVertices();
 
 	void deslocarElemento(float eixoX, float eixoY);

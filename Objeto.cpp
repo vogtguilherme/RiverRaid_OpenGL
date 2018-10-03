@@ -1,20 +1,19 @@
-#include "Cenario.h"
+#include "Objeto.h"
 
-Cenario::Cenario()
-{
-	
-}
-
-Cenario::~Cenario()
+Objeto::Objeto()
 {
 }
 
-void Cenario::addVertex(float x, float y)
+Objeto::~Objeto()
+{
+}
+
+void Objeto::addVertex(float x, float y)
 {
 	pontos.push_back(posicoes(x, y));
 }
 
-void Cenario::desenharElemento(float red, float green, float blue)
+void Objeto::desenharElemento(float red, float green, float blue)
 {
 	glPushMatrix();
 
@@ -28,12 +27,13 @@ void Cenario::desenharElemento(float red, float green, float blue)
 	}
 	glEnd();
 	glPopMatrix();
+
 	//glTranslatef(800.f / 2.f, 600.f / 2.f, 0.f);
 
 	debugPosicoesVertices();
 }
 
-void Cenario::detectarColisao(Cenario objeto)
+void Objeto::detectarColisao(Objeto objeto)
 {
 	if ((this->pontos.at(0).x >= objeto.pontos.at(0).x && this->pontos.at(0).x <= objeto.pontos.at(1).x) || 
 		(this->pontos.at(2).x >= objeto.pontos.at(0).x && this->pontos.at(2).x <= objeto.pontos.at(1).x))
@@ -60,7 +60,7 @@ void Cenario::detectarColisao(Cenario objeto)
 	}
 }
 
-void Cenario::debugPosicoesVertices()
+void Objeto::debugPosicoesVertices()
 {
 	/*for (int i = 0; i < pontos.size; i++)
 	{
@@ -68,7 +68,7 @@ void Cenario::debugPosicoesVertices()
 	}*/
 }
 
-void Cenario::deslocarElemento(float eixoX, float eixoY)
+void Objeto::deslocarElemento(float eixoX, float eixoY)
 {
 	for (int i = 0; i < pontos.size(); i++)
 	{

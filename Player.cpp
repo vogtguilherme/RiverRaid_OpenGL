@@ -1,13 +1,9 @@
 #include "Player.h"
 
-
-
 void Player::CriaPlayer(float x, float y)
 {
 	Px1 += x;
 	Py1 += y;
-	
-
 }
 
 void Player::Desenhodois(float x, float y)

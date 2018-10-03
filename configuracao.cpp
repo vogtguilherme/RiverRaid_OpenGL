@@ -10,7 +10,7 @@ GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
 
 Bloco cenarioBase;
-Cenario objTeste, obj2;
+Objeto objTeste, obj2;
 
 Player player;
 
@@ -66,6 +66,8 @@ void Start()
 	obj2.addVertex(0.5f, 0.f);
 	obj2.addVertex(0.f, 0.35f);
 	obj2.addVertex(-0.5f, 0.f);
+
+	obj2.deslocarElemento(0.f, -4.5f);
 
 	cameraPosY = cameraY;
 }

@@ -6,7 +6,7 @@
 
 #include "Bloco.h"
 #include "Player.h"
-#include "Cenario.h"
+#include "Objeto.h"
 
 #ifndef CONFIGURACAO_H
 #define CONFIGURACAO_H

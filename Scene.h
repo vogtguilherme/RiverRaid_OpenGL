@@ -3,7 +3,7 @@
 #include "GL\freeglut.h"
 
 #include "Player.h"
-#include "Cenario.h"
+#include "Objeto.h"
 #include "Bloco.h"
 
 #include <iostream>
