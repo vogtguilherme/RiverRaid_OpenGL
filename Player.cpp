@@ -51,8 +51,8 @@ void Player::Desenhodois(float x, float y)
 void Player::DesenhaPlayer()
 {
 	//parte de baixo
-	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0, 0.75, 0.75);
+	glBegin(GL_QUADS);
 	glVertex2f(Px1 + 0.5f, Py1 + 0.1f);
 	glVertex2f(Px2 + 0.5f, Py2 + 0.3f);
 	glVertex2f(Px3 + 1.1f, Py3 + 0.3f);
@@ -64,8 +64,8 @@ void Player::DesenhaPlayer()
 	glEnd();
 
 	//parte DO MEIO
-	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0, 0.75, 0.75);
+	glBegin(GL_POLYGON);
 	glVertex2f(Px1 + 0.5f, Py1 + 0.3f);
 	glVertex2f(Px2 + 0.6f, Py2 + 0.5f);
 	glVertex2f(Px3 + 0.6f, Py3 + 0.7f);
@@ -75,8 +75,8 @@ void Player::DesenhaPlayer()
 	glEnd();
 
 	//parte de cima
-	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0, 0.75, 0.75);
+	glBegin(GL_POLYGON);
 	glVertex2f(Px1 + 0.6f, Py1 + 0.7f);
 	glVertex2f(Px2 + 0.6f, Py2 + 1.1f);
 	glVertex2f(Px3 + 1.0f, Py3 + 1.1f);
@@ -85,7 +85,7 @@ void Player::DesenhaPlayer()
 
 	//asa esquerda
 	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glBegin(GL_QUADS);
 	glVertex2f(Px1 + 0.0f, Py1 + 0.9f);
 	glVertex2f(Px2 + 0.2f, Py2 + 1.1f);
 	glVertex2f(Px3 + 0.6f, Py3 + 1.1f);
@@ -94,7 +94,7 @@ void Player::DesenhaPlayer()
 
 	//asa direita
 	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glBegin(GL_QUADS);
 	glVertex2f(Px1 + 1.6f, Py1 + 0.9f);
 	glVertex2f(Px2 + 1.0f, Py2 + 0.5f);
 	glVertex2f(Px3 + 1.0f, Py3 + 1.1f);
@@ -102,8 +102,8 @@ void Player::DesenhaPlayer()
 	glEnd();
 
 	//asa canhao esquerdo
-	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0, 0.75, 0.75);
+	glBegin(GL_QUADS);
 	glVertex2f(Px1 + 0.3f, Py1 + 1.1f);
 	glVertex2f(Px2 + 0.3f, Py2 + 1.4f);
 	glVertex2f(Px3 + 0.5f, Py3 + 1.4f);
@@ -111,8 +111,8 @@ void Player::DesenhaPlayer()
 	glEnd();
 
 	//asa canhao diureito
-	glColor3f(1.0, 1.0, 0.0);
-	glBegin(GL_LINE_LOOP);
+	glColor3f(1.0, 0.75, 0.75);
+	glBegin(GL_QUADS);
 	glVertex2f(Px1 + 1.3f, Py1 + 1.1f);
 	glVertex2f(Px2 + 1.1f, Py2 + 1.1f);
 	glVertex2f(Px3 + 1.1f, Py3 + 1.4f);
