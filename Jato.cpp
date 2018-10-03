@@ -12,7 +12,7 @@ Jato::Jato()
 	addVertex(0.f, 0.15f);
 	addVertex(-0.25f, 0.f);
 
-	deslocarElemento(0.0f, -4.5f);
+	deslocarElemento(0.0f, -3.5f);
 
 	collider.addVertex(-.05f, 1.f);
 	collider.addVertex(.05f, 1.f);

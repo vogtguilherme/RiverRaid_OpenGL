@@ -33,4 +33,6 @@ void Input(unsigned char key, int x, int y);
 
 void FrameCount();
 
+void EscreveVidas(void);
+
 #endif
