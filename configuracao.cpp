@@ -54,6 +54,8 @@ void Start()
 {	
 	cout << "Start" << endl;	
 
+	cout << "Camera pos: " << cameraPosY << endl;
+
 	hud.addVertex(-5.f, -4.f);
 	hud.addVertex(5.f, -4.f);
 	hud.addVertex(5.f, -5.f);
@@ -104,7 +106,7 @@ void Render()
 
 void Update()
 {		
-	cameraPosY += velocidadeMovimento;	
+	cameraPosY += velocidadeMovimento;
 	
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
@@ -142,10 +144,20 @@ void Update()
 	
 
 	//Movimentacao barquinho
-	navio.detectar(cenarioBase, velocidadeMovimento);
-
-	
+	navio.detectar(cenarioBase, velocidadeMovimento);	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
+
+	if (tiro.collider.detectarColisaoWithPositions(coptero.extremoRight, coptero.extremoLeft, coptero.extremoUP, coptero.extremoDown))
+	{
+		//Destroi coptero
+		cout << "Destroi coptero" << endl;
+	}
+
+	if (tiro.collider.detectarColisaoWithPositions(navio.extremoRight, navio.extremoLeft, navio.extremoUP, navio.extremoDown))
+	{
+		//Destroi navio
+		cout << "Destroi navio" << endl;
+	}
 
 	if (player.collider.detectarColisao(cenarioBase.montanhaDireita))
 	{
@@ -158,17 +170,19 @@ void Update()
 	else
 		player.colisaoDetectada = false;
 		
-	player.collider.detectarColisaoWithPositions(coptero.extremoRight, coptero.extremoLeft, coptero.extremoUP, coptero.extremoDown);
-	player.collider.detectarColisaoWithPositions(navio.extremoRight, navio.extremoLeft, navio.extremoUP, navio.extremoDown);
-	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
-	player.collider.detectarColisao(cenarioBase.montanhaDireita);
+	if (player.collider.detectarColisaoWithPositions(coptero.extremoRight, coptero.extremoLeft, coptero.extremoUP, coptero.extremoDown))
+	{
+		player.colisaoDetectada = true;
+	}
+	else if(player.collider.detectarColisaoWithPositions(navio.extremoRight, navio.extremoLeft, navio.extremoUP, navio.extremoDown))
+	{
+		player.colisaoDetectada = true;
+	}	
+
 	if (player.colisaoDetectada)
 	{
 		player.ResetarJato(cameraPosY);
 	}
-
-
-
 	//Save default matrix again with camera translation
 	glPushMatrix();
 }
