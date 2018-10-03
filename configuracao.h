@@ -27,4 +27,6 @@ void Update();
 
 void Input(unsigned char key, int x, int y);
 
+void FrameCount();
+
 #endif

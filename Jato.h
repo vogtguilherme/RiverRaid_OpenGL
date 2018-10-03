@@ -6,9 +6,16 @@ class Jato :
 {
 public:
 
-	Objeto collider;
-	
+	Objeto collider;	
+
 	Jato();
-	~Jato();	
+	~Jato();
+
+	int getVidas();
+	void setVida(int value);
+
+private:
+
+	int vidas = 3;
 };
 

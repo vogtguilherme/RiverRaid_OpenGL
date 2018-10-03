@@ -89,15 +89,8 @@ void Render()
 
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
 
-	contagemFrames++;
-	tempoFinal = time(NULL);
-	if (tempoFinal - tempoInicial > 0)
-	{
-		cout << "FPS: " << contagemFrames / (tempoFinal - tempoInicial) << endl;
-		contagemFrames = 0;
-		tempoInicial = tempoFinal;
-	}
-
+	//DebugFPS
+	FrameCount();
 	//Update screen
 	glutSwapBuffers();
 }
@@ -159,4 +152,16 @@ void Input(unsigned char key, int x, int y)
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
+}
+
+void FrameCount()
+{
+	contagemFrames++;
+	tempoFinal = time(NULL);
+	if (tempoFinal - tempoInicial > 0)
+	{
+		cout << "FPS: " << contagemFrames / (tempoFinal - tempoInicial) << endl;
+		contagemFrames = 0;
+		tempoInicial = tempoFinal;
+	}
 }
