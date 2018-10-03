@@ -13,11 +13,11 @@ void Objeto::addVertex(float x, float y)
 	pontos.push_back(posicoes(x, y));
 }
 
-void Objeto::desenharElemento(float red, float green, float blue)
+void Objeto::desenharElemento(float red, float green, float blue, float alpha)
 {
 	glPushMatrix();
 
-	glColor3f(red, green, blue);
+	glColor4f(red, green, blue, alpha);
 	
 	glBegin(GL_POLYGON);
 

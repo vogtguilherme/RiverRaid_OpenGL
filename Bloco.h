@@ -11,7 +11,6 @@ public:
 	~Bloco();
 
 	void DesenhaBloco();
-private:
 	
 	void CriarBordasCenario();
 

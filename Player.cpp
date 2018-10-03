@@ -115,11 +115,15 @@ void Player::DesenhaPlayer()
 	glVertex2f(Px3 + 1.3f, Py3 + 1.4f);
 	glEnd();
 
-
+	//colisor.desenharElemento(.0f, .0f, .0f, .0f);
 }
 
 Player::Player()
 {
+	colisor.addVertex(0.2f, 0.9f);//Ponto 0 do colisor
+	colisor.addVertex(0.8f, 0.9f);//Ponto 1 do colisor
+	colisor.addVertex(0.8f, 0.1f);//Ponto 2 do colisor
+	colisor.addVertex(0.2f, 0.1f);//Ponto 3 do colsior
 }
 
 

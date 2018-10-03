@@ -54,6 +54,9 @@
     <ClInclude Include="Objeto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Jato.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Barco.cpp">
@@ -93,6 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Objeto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jato.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
