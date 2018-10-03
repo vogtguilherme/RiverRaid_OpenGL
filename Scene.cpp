@@ -208,8 +208,7 @@ void Scene::TeclasEspeciais(int tecla, int x, int y)
 		
 		if (bala.atirando == true)
 		{
-			bala.CriaTiro(jogador);
-			
+			//bala.CriaTiro(jogador);			
 		}
 	}
 	if (tecla == GLUT_KEY_LEFT) 

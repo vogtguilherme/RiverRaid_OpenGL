@@ -2,7 +2,7 @@
 
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
-GLfloat velocidadeMovimento = 0.025f;
+GLfloat velocidadeMovimento = 0.015f;
 GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
 Bloco cenarioBase;
@@ -10,7 +10,7 @@ Objeto objTeste, obj2;
 Barco navio;
 Helicoptero coptero;
 Jato player;
-
+Tiro tiro;
 
 bool Setup()
 {
@@ -81,16 +81,14 @@ void Render()
 	//glTranslatef(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f, 0.f);
 
 	cenarioBase.DesenhaBloco();
-
-	/*objTeste.desenharElemento(0.8f, 0.f, 0.f);
 	
-	obj2.desenharElemento(0.f, 1.f, 1.f);*/
-
-	//player.DesenhaPlayer();
-	
+	tiro.DesenhaTiro();
 	navio.desenhabarco();
 	coptero.Desenhahelecoptyero();
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
+
+	if (tiro.atirando)
+		tiro.MoveBala(0, 0.5f);
 
 	//DebugFPS
 	FrameCount();
@@ -100,28 +98,35 @@ void Render()
 
 void Update()
 {		
-	cameraPosY += velocidadeMovimento;
+	cameraPosY += velocidadeMovimento;	
 	
-	//Take saved matrix off the stack and reset it
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 	glLoadIdentity();
 
-	//Move camera to position
+	//Desloca a camera verticalmente em velocidade constante
 	glTranslatef(0.f, (cameraY - cameraPosY), 0.f);
+	//Desloca o jogador da mesma maneira
 	player.deslocarElemento(0.f, velocidadeMovimento);
+	//Desloca o colisor do jogador
 	player.collider.deslocarElemento(0.f, velocidadeMovimento);
 
-	//obj2.detectarColisao(objTeste);
-
-
-	//movimentacao barquinho
+	//Movimentacao barquinho
 	navio.detectar(cenarioBase, velocidadeMovimento);
 	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
 
+
 	player.collider.detectarColisao(cenarioBase.montanhaDireita);
 	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
+
+	/*if (tiro.atirando) 
+	{
+		tiro.CriaTiro(player);
+		
+		tiro.atirando = false;
+	}*/
+		
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
@@ -149,7 +154,13 @@ void Input(unsigned char key, int x, int y)
 	{		
 		player.deslocarElemento(.1f, 0);
 		player.collider.deslocarElemento(.1f, 0);
-	}	
+	}
+
+	if (key == 't')
+	{
+		tiro.CriaTiro(player);
+		tiro.atirando = true;
+	}
 
 	//Take saved matrix off the stack and reset it
 	glMatrixMode(GL_MODELVIEW);
