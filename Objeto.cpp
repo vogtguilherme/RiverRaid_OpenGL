@@ -11,6 +11,7 @@ Objeto::~Objeto()
 void Objeto::addVertex(float x, float y)
 {
 	pontos.push_back(posicoes(x, y));
+	pontosIniciais.push_back(posicoes(x, y));
 }
 
 void Objeto::desenharElemento(float red, float green, float blue, float alpha)
@@ -25,6 +26,7 @@ void Objeto::desenharElemento(float red, float green, float blue, float alpha)
 	{
 		glVertex2f(pontos[i].x, pontos[i].y);
 	}
+
 	glEnd();
 	glPopMatrix();
 

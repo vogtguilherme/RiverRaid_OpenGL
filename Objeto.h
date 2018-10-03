@@ -21,6 +21,8 @@ public:
 	~Objeto();
 
 	vector<posicoes> pontos;
+
+	vector<posicoes> pontosIniciais;
 	
 	void addVertex(float x, float y);
 	void desenharElemento(float red, float green, float blue, float alpha);
