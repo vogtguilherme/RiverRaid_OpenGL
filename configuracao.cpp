@@ -87,6 +87,8 @@ void Render()
 	coptero.Desenhahelecoptyero();
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
 
+	//navio.colisor.desenharElemento(0.75, 0.75, 0.75, 0);
+	//coptero.Colider.desenharElemento(0.75, 0.75, 0.75, 0);
 	if (tiro.atirando)
 		tiro.MoveBala(0, 0.5f);
 
@@ -111,6 +113,28 @@ void Update()
 	//Desloca o colisor do jogador
 	player.collider.deslocarElemento(0.f, velocidadeMovimento);
 
+
+	//detectar colisao com a nave e o barco
+	if (navio.paraLeft == true) 
+	{
+		navio.colisor.deslocarElemento(-velocidadeMovimento, 0);
+	}
+	else if(navio.paraLeft==false)
+	{
+		navio.colisor.deslocarElemento(velocidadeMovimento, 0);
+	}
+	
+
+	//detectacolisao com o coptero
+	if (coptero.paraLeft == true){
+		coptero.Colider.deslocarElemento(-velocidadeMovimento*1.5, 0);
+	}
+	else if(coptero.paraLeft==false)
+	{
+		coptero.Colider.deslocarElemento(velocidadeMovimento*1.5, 0);
+	}
+	
+
 	//Movimentacao barquinho
 	navio.detectar(cenarioBase, velocidadeMovimento);
 	
@@ -119,6 +143,8 @@ void Update()
 
 	player.collider.detectarColisao(cenarioBase.montanhaDireita);
 	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
+	player.collider.detectarColisao(navio.colisor);
+	player.collider.detectarColisao(coptero.Colider);
 
 	/*if (tiro.atirando) 
 	{

@@ -75,7 +75,7 @@ void Barco::MoveBarco(float _x, float _y)
 	if (paraLeft) extremoRight = px + 0.6;
 	else extremoRight = px - 0.1;
 
-
+	
 	
 
 	sizeX = 0.5f;
@@ -92,6 +92,7 @@ void Barco::detectar(Bloco colisao,float velocidade)
 	{
 		paraLeft = false;
 		MoveBarco(sizeX, 0);
+
 	}
 	else if (extremoRight >= colisao.extremoRight && paraLeft == false)
 	{
@@ -99,8 +100,15 @@ void Barco::detectar(Bloco colisao,float velocidade)
 		MoveBarco(-sizeX, 0);
 	}
 
-	if (paraLeft == true)MoveBarco(-velocidade * 1.0, 0);
+	if (paraLeft == true) 
+	{
+		MoveBarco(-velocidade * 1.0, 0);
+
+
+	}
+		
 	else if (paraLeft == false)MoveBarco(velocidade * 1.0, 0);
+
 
 }
 
@@ -108,7 +116,18 @@ void Barco::detectar(Bloco colisao,float velocidade)
 
 Barco::Barco()
 {
+	colisor.addVertex(0.0f, 0.5f);
+	colisor.addVertex(0.6f, 0.5f);
+	colisor.addVertex(0.6f, 0.1f);
+	colisor.addVertex(0.0f, 0.1f);
 
+	//colisor.deslocarElemento( - 4.5f, 0.0f);
+	//px0 py5 ponto o
+	//px6 py5 ponto 1
+	//px6 py1 ponto 2
+	//px0 py1 ponto 3
+
+	
 }
 
 

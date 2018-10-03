@@ -1,12 +1,14 @@
 #pragma once
 #include"Bloco.h"
 
+
+
 class Helicoptero
 {
 
-
-
+	
 public:
+	Objeto Colider;
 
 	float extremoLeft, extremoRight;
 	bool paraLeft = true;
