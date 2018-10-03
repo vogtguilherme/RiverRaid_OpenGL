@@ -48,13 +48,37 @@ bool Objeto::detectarColisao(Objeto objeto)
 		}
 		else
 		{
-			cout << "NAO COLIDIU" << endl;
+			//cout << "NAO COLIDIU" << endl;
 			return false;
 		}
 	}
 	else
 	{
-		cout << "NAO COLIDIU" << endl;
+		//cout << "NAO COLIDIU" << endl;
+		return false;
+	}
+}
+
+bool Objeto::detectarColisaoWithPositions(float er, float el, float eu, float ed)
+{
+	if ((this->pontos.at(0).x >= el && this->pontos.at(0).x <= er) ||
+		(this->pontos.at(2).x >= el && this->pontos.at(2).x <= er))
+	{
+		if ((this->pontos.at(0).y >= ed && this->pontos.at(0).y <= eu) ||
+			(this->pontos.at(2).y >= ed && this->pontos.at(2).y <= eu))
+		{
+			cout << "GLORIA A DEUX" << endl;
+			return true;
+		}
+		else
+		{
+			//cout << "NAO COLIDIU" << endl;
+			return false;
+		}
+	}
+	else
+	{
+		//cout << "NAO COLIDIU" << endl;
 		return false;
 	}
 }

@@ -1,4 +1,5 @@
 #include "configuracao.h"
+#include <ctime>
 
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
@@ -54,12 +55,20 @@ void Start()
 {	
 	cout << "Start" << endl;	
 
+	cout << "Camera pos: " << cameraPosY << endl;
+
 	hud.addVertex(-5.f, -4.f);
 	hud.addVertex(5.f, -4.f);
 	hud.addVertex(5.f, -5.f);
 	hud.addVertex(-5.f, -5.f);
 
 	cameraPosY = cameraY;
+
+	navio.CriaBarco(3, 6);
+	
+	coptero.Criahelecoptero(-1.5, 5);
+
+	std::srand(std::time(nullptr));
 }
 
 void Render()
@@ -100,7 +109,7 @@ void Render()
 
 void Update()
 {		
-	cameraPosY += velocidadeMovimento;	
+	cameraPosY += velocidadeMovimento;
 	
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
@@ -136,11 +145,30 @@ void Update()
 		coptero.Colider.deslocarElemento(velocidadeMovimento*1.5, 0);
 	}
 	
+	int random_variable = std::rand() % 8;
 
 	//Movimentacao barquinho
 	navio.detectar(cenarioBase, velocidadeMovimento);
 	
+	if (navio.extremoUP < cameraPosY - 4) navio.CriaBarco(random_variable -4, random_variable + cameraPosY + 5 + 0.5f);
+	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
+
+	if (tiro.collider.detectarColisaoWithPositions(coptero.extremoRight, coptero.extremoLeft, coptero.extremoUP, coptero.extremoDown))
+	{
+		//Destroi coptero
+		cout << "Destroi coptero" << endl;
+		coptero.destruiu = true;
+	}
+
+	if (tiro.collider.detectarColisaoWithPositions(navio.extremoRight, navio.extremoLeft, navio.extremoUP, navio.extremoDown))
+	{
+		//Destroi navio
+		cout << "Destroi navio" << endl;
+		navio.destruiu = true;
+	}
+
+	if (coptero.extremoUP < cameraPosY - 4) coptero.Criahelecoptero(random_variable -4, random_variable + cameraPosY + 5 + 0.7f);
 
 	if (player.collider.detectarColisao(cenarioBase.montanhaDireita))
 	{
@@ -152,16 +180,20 @@ void Update()
 	}
 	else
 		player.colisaoDetectada = false;
+		
+	if (player.collider.detectarColisaoWithPositions(coptero.extremoRight, coptero.extremoLeft, coptero.extremoUP, coptero.extremoDown))
+	{
+		player.colisaoDetectada = true;
+	}
+	else if(player.collider.detectarColisaoWithPositions(navio.extremoRight, navio.extremoLeft, navio.extremoUP, navio.extremoDown))
+	{
+		player.colisaoDetectada = true;
+	}	
 
-	player.collider.detectarColisao(coptero.Colider);
-	player.collider.detectarColisao(navio.colisor);
-	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
-	player.collider.detectarColisao(cenarioBase.montanhaDireita);
 	if (player.colisaoDetectada)
 	{
 		player.ResetarJato(cameraPosY);
 	}
-
 	//Save default matrix again with camera translation
 	glPushMatrix();
 }

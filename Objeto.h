@@ -28,6 +28,7 @@ public:
 	void desenharElemento(float red, float green, float blue, float alpha);
 
 	bool detectarColisao(Objeto objeto);
+	bool detectarColisaoWithPositions(float er, float el, float eu, float ed);
 	void debugPosicoesVertices();
 
 	void deslocarElemento(float eixoX, float eixoY);

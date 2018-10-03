@@ -5,11 +5,16 @@
 void Barco::CriaBarco(float _x, float _y)
 {
 	px = _x;
-	py = _y;
+	py = _y;	
+
+	cout << "SUMIU????" << endl;
+
+	destruiu = false;
+
 }
 void Barco::desenhabarco()
 {
-	if (destruiu)
+	if (!destruiu)
 	{
 		if (paraLeft)
 		{
@@ -75,9 +80,9 @@ void Barco::MoveBarco(float _x, float _y)
 	if (paraLeft) extremoRight = px + 0.6;
 	else extremoRight = px - 0.1;
 
+	extremoUP = py + 0.5f;
+	extremoDown = py + 0.1f;
 	
-	
-
 	sizeX = 0.5f;
 	sizeY = 0.4f;
 
@@ -116,10 +121,10 @@ void Barco::detectar(Bloco colisao,float velocidade)
 
 Barco::Barco()
 {
-	colisor.addVertex(0.0f, 0.5f);
-	colisor.addVertex(0.6f, 0.5f);
-	colisor.addVertex(0.6f, 0.1f);
-	colisor.addVertex(0.0f, 0.1f);
+	colisor.addVertex(px + 0.0f,py + 0.5f);
+	colisor.addVertex(px + 0.6f, py + 0.5f);
+	colisor.addVertex(px + 0.6f, py + 0.1f);
+	colisor.addVertex(px + 0.0f, py + 0.1f);
 
 	//colisor.deslocarElemento( - 4.5f, 0.0f);
 	//px0 py5 ponto o
