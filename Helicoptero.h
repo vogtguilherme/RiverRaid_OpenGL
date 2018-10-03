@@ -10,7 +10,7 @@ class Helicoptero
 public:
 	Objeto Colider;
 
-	float extremoLeft, extremoRight;
+	float extremoLeft, extremoRight, extremoUP, extremoDown;
 	bool paraLeft = true;
 	float px, py;
 	/*float Px1,Px2,Px3,Px4,Px5,Px6,Px7,Px8,Px9,Px10,Px11,Px12,Px13,Px14,Px15;

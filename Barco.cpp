@@ -5,9 +5,7 @@
 void Barco::CriaBarco(float _x, float _y)
 {
 	px = _x;
-	py = _y;
-
-	
+	py = _y;	
 
 }
 void Barco::desenhabarco()
@@ -78,9 +76,9 @@ void Barco::MoveBarco(float _x, float _y)
 	if (paraLeft) extremoRight = px + 0.6;
 	else extremoRight = px - 0.1;
 
+	extremoUP = py + 0.5f;
+	extremoDown = py + 0.1f;
 	
-	
-
 	sizeX = 0.5f;
 	sizeY = 0.4f;
 

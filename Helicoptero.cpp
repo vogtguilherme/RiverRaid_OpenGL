@@ -85,6 +85,9 @@ void Helicoptero::MoveHelecoptero(float _x, float _y)
 	if (paraLeft) extremoRight = px + 1;
 	else extremoRight = px - 0.1;
 
+	extremoUP = py + 0.7f;
+	extremoDown = py;
+
 	sizeX = 0.9f;
 	sizeY = 0.7f;
 
