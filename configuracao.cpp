@@ -60,6 +60,9 @@ void Start()
 	hud.addVertex(-5.f, -5.f);
 
 	cameraPosY = cameraY;
+
+	navio.CriaBarco(0.0, 0.0);
+	coptero.Criahelecoptero(1.5, 4.5);
 }
 
 void Render()
@@ -83,7 +86,7 @@ void Render()
 	
 	//player.collider.desenharElemento(1.f, 1.f, 1.f, 0.1f);
 
-	//coptero.Colider.desenharElemento(0.75, 0.75, 0.75, 0);
+	coptero.Colider.desenharElemento(0.75, 0.75, 0.75, 0);
 	//navio.colisor.desenharElemento(0.75, 0.75, 0.75, 0);
 	if (tiro.atirando)
 		tiro.MoveBala(0, 0.5f);
