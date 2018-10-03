@@ -25,7 +25,7 @@ public:
 	void addVertex(float x, float y);
 	void desenharElemento(float red, float green, float blue, float alpha);
 
-	void detectarColisao(Objeto objeto);
+	bool detectarColisao(Objeto objeto);
 	void debugPosicoesVertices();
 
 	void deslocarElemento(float eixoX, float eixoY);

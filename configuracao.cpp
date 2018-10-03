@@ -3,14 +3,18 @@
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
 GLfloat velocidadeMovimento = 0.015f;
+
 GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
+
 Bloco cenarioBase;
-Objeto objTeste, obj2;
+Objeto hud;
 Barco navio;
 Helicoptero coptero;
 Jato player;
 Tiro tiro;
+
+
 
 bool Setup()
 {
@@ -50,17 +54,10 @@ void Start()
 {	
 	cout << "Start" << endl;	
 
-	objTeste.addVertex(-2.f, 3.f);
-	objTeste.addVertex(2.f, 3.f);
-	objTeste.addVertex(2.5f, -4.f);
-	objTeste.addVertex(-2.5f, -4.f);
-
-	/*obj2.addVertex(0.f, 2.f);
-	obj2.addVertex(0.5f, 0.f);
-	obj2.addVertex(0.f, 0.35f);
-	obj2.addVertex(-0.5f, 0.f);*/
-
-	//obj2.deslocarElemento(0.f, -4.5f);
+	hud.addVertex(-5.f, -4.f);
+	hud.addVertex(5.f, -4.f);
+	hud.addVertex(5.f, -5.f);
+	hud.addVertex(-5.f, -5.f);
 
 	cameraPosY = cameraY;
 }
@@ -75,25 +72,27 @@ void Render()
 	glPopMatrix();
 
 	//Save default matrix again
-	glPushMatrix();
+	glPushMatrix();	
 
-	//Move to center of the screen
-	//glTranslatef(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f, 0.f);
-
-	cenarioBase.DesenhaBloco();
+	cenarioBase.DesenhaBloco();	
 	
 	tiro.DesenhaTiro();
 	navio.desenhabarco();
 	coptero.Desenhahelecoptyero();
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
+	player.collider.desenharElemento(1.f, 1.f, 1.f, 0.1f);
 
-	//navio.colisor.desenharElemento(0.75, 0.75, 0.75, 0);
 	//coptero.Colider.desenharElemento(0.75, 0.75, 0.75, 0);
+	//navio.colisor.desenharElemento(0.75, 0.75, 0.75, 0);
 	if (tiro.atirando)
 		tiro.MoveBala(0, 0.5f);
 
 	//DebugFPS
 	FrameCount();
+
+	hud.desenharElemento(0.5f, 0.5f, 0.5f, 1.0f);
+	EscreveVidas();
+
 	//Update screen
 	glutSwapBuffers();
 }
@@ -112,6 +111,8 @@ void Update()
 	player.deslocarElemento(0.f, velocidadeMovimento);
 	//Desloca o colisor do jogador
 	player.collider.deslocarElemento(0.f, velocidadeMovimento);
+
+	hud.deslocarElemento(0.f, velocidadeMovimento);
 
 
 	//detectar colisao com a nave e o barco
@@ -140,19 +141,25 @@ void Update()
 	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
 
-
-	player.collider.detectarColisao(cenarioBase.montanhaDireita);
-	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
-	player.collider.detectarColisao(navio.colisor);
-	player.collider.detectarColisao(coptero.Colider);
-
-	/*if (tiro.atirando) 
+	if (player.collider.detectarColisao(cenarioBase.montanhaDireita))
 	{
-		tiro.CriaTiro(player);
-		
-		tiro.atirando = false;
-	}*/
-		
+		player.colisaoDetectada = true;
+	}
+	else if (player.collider.detectarColisao(cenarioBase.montanhaEsquerda))
+	{
+		player.colisaoDetectada = true;
+	}
+	else
+		player.colisaoDetectada = false;
+
+	player.collider.detectarColisao(coptero.Colider);
+	player.collider.detectarColisao(navio.colisor);
+	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
+	player.collider.detectarColisao(cenarioBase.montanhaDireita);
+	if (player.colisaoDetectada)
+	{
+		player.ResetarJato(cameraPosY);
+	}
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
@@ -210,4 +217,27 @@ void FrameCount()
 		contagemFrames = 0;
 		tempoInicial = tempoFinal;
 	}
+}
+
+void EscreveVidas(void)
+{
+	char texto[8] = "VIDAS:";
+	char teste[20];
+	int i = 0;
+
+	//Conversão de inteiro para string, pois a OpenGL só escreve string ou char
+	sprintf_s(teste, "%d", player.getVidas());
+
+	//Cor da fonte
+	glColor3ub(255, 255, 255);
+	//glColor3f(1,0,0);
+	//Posição da palavra
+	glRasterPos3f(-4.0, -4.5 + cameraPosY, 0.0);
+
+	//Uso do "for" para escrever mais de um caracter
+	for (i = 0; i <= strlen(texto); i++)
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, texto[i]);
+
+	for (i = 0; i <= strlen(teste); i++)
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, teste[i]);
 }

@@ -18,8 +18,7 @@
 //Variaveis da tela
 const int LARGURA_TELA = 800;
 const int ALTURA_TELA = 600;
-const int FPS = 30;
-
+const int FPS = 60;
 
 bool Setup();
 
@@ -32,5 +31,7 @@ void Update();
 void Input(unsigned char key, int x, int y);
 
 void FrameCount();
+
+void EscreveVidas(void);
 
 #endif
