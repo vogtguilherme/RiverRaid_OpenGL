@@ -265,8 +265,8 @@ void Scene::update(void)
 
 
 
-	if (barquinho.destruiu==true
-)
+	if (barquinho.destruiu==true)
+
 	{
 		barquinho.desenhabarco();
 	}
@@ -316,12 +316,10 @@ void Scene::update(void)
 
 	//bala teste
 	if (bala.atirando == true) {
-		if (bala.tirocima <= paredes.extremoLeft && bala.atirando == true)
-		{
-			
+					
 			bala.MoveBala(0, bala.sizeY);
 			
-		}
+		
 		if (bala.atirando == true)bala.MoveBala(0, speedl1 * 240);
 	}
 	
