@@ -33,7 +33,7 @@ void Objeto::desenharElemento(float red, float green, float blue, float alpha)
 	debugPosicoesVertices();
 }
 
-void Objeto::detectarColisao(Objeto objeto)
+bool Objeto::detectarColisao(Objeto objeto)
 {
 	if ((this->pontos.at(0).x >= objeto.pontos.at(0).x && this->pontos.at(0).x <= objeto.pontos.at(1).x) || 
 		(this->pontos.at(2).x >= objeto.pontos.at(0).x && this->pontos.at(2).x <= objeto.pontos.at(1).x))
@@ -42,21 +42,18 @@ void Objeto::detectarColisao(Objeto objeto)
 			(this->pontos.at(2).y >= objeto.pontos.at(3).y && this->pontos.at(2).y <= objeto.pontos.at(0).y))	
 		{
 			cout << "GLORIA A DEUX" << endl;
-
-			//return true;
+			return true;
 		}
 		else
 		{
 			cout << "NAO COLIDIU" << endl;
-
-			//return false;
+			return false;
 		}
 	}
 	else
 	{
 		cout << "NAO COLIDIU" << endl;
-
-		//return false;
+		return false;
 	}
 }
 
