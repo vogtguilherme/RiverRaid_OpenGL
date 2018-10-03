@@ -2,6 +2,8 @@
 
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
+float uai = 0.f;
+
 GLfloat velocidadeMovimento = 0.05f;
 
 GLfloat cameraX, cameraY;
@@ -48,19 +50,22 @@ bool Setup()
 
 void Start()
 {	
-	cout << "Start" << endl;
-
-	float uai = 2.f;
+	cout << "Start" << endl;	
 
 	objTeste.addVertex(-2.f, 3.f);
 	objTeste.addVertex(2.f, 3.f);
 	objTeste.addVertex(2.5f, -4.f);
 	objTeste.addVertex(-2.5f, -4.f);
 
-	obj2.addVertex(uai + 0.f, uai + 1.f);
-	obj2.addVertex(uai + 1.f, uai + 1.f);
-	obj2.addVertex(uai + 1.f, uai +(-1.f));
-	obj2.addVertex(uai + 0.f, uai +(-1.f));
+	/*obj2.addVertex(uai + 0.f, uai + 2.f);
+	obj2.addVertex(uai + 0.5f, uai + 0.f);
+	obj2.addVertex(uai + 0.f, uai + 0.35f);
+	obj2.addVertex(uai + (-0.5f), uai +0.f);*/
+
+	obj2.addVertex(0.f, 2.f);
+	obj2.addVertex(0.5f, 0.f);
+	obj2.addVertex(0.f, 0.35f);
+	obj2.addVertex(-0.5f, 0.f);
 
 	cameraPosY = cameraY;
 }
@@ -111,7 +116,7 @@ void Update()
 	glLoadIdentity();
 
 	//Move camera to position
-	//glTranslatef(0.f, (cameraY + cameraPosY) * -1.f, 0.f);
+	glTranslatef(0.f, (cameraY + cameraPosY) * -.05f, 0.f);	
 
 	obj2.detectarColisao(objTeste);
 
@@ -120,26 +125,30 @@ void Update()
 }
 
 void Input(unsigned char key, int x, int y)
-{	
+{		
 	//Comportamentos diferentes para cada tecla que o jogador pressionar
 
 	//Se a tecla for W o Jato deve avançar mais rapidamente, e a câmera subir junto
 	if (key == 'w')
 	{
-		cameraY -= 1.f;		
+		cameraY -= .5f;
 	}
 	else if (key == 's')
 	{
-		cameraY += 1.f;
+		cameraY += .025f;
 	}
 	else if (key == 'a')
 	{
-		cameraX -= 1.f;
+		//cameraX -= 1.f;
+		obj2.deslocarElemento(-.5f, 0);
+		uai -= .1f;
 	}
 	else if (key == 'd')
 	{
-		cameraX += 1.f;
-	}
+		//cameraX += 1.f;
+		obj2.deslocarElemento(.5f, 0);
+		uai += .1f;
+	}	
 
 	//Take saved matrix off the stack and reset it
 	glMatrixMode(GL_MODELVIEW);

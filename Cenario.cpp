@@ -70,9 +70,8 @@ void Cenario::debugPosicoesVertices()
 
 void Cenario::deslocarElemento(float eixoX, float eixoY)
 {
-	glPushMatrix();
-
-	glTranslatef(eixoX, eixoY, 0);
-
-	glPopMatrix();
+	for (int i = 0; i < pontos.size(); i++)
+	{
+		pontos[i].x += eixoX, pontos[i].y += eixoY;
+	}	
 }

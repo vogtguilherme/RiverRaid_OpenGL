@@ -8,14 +8,6 @@ void main(int argc, char **argv)
 #include "configuracao.h"
 
 void runMainLoop(int val);
-/*
-Pre Condition:
--Initialized freeGLUT
-Post Condition:
--Calls the main loop functions and sets itself to be called back in 1000 / SCREEN_FPS milliseconds
-Side Effects:
--Sets glutTimerFunc
-*/
 
 int main(int argc, char* args[])
 {
@@ -58,10 +50,10 @@ int main(int argc, char* args[])
 
 void runMainLoop(int val)
 {	
-	Render();	
 	//Frame logic
 	Update();
-
+	
+	Render();
 	//Run frame one more time
 	glutTimerFunc(1000 / FPS, runMainLoop, val);
 }
