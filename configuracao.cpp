@@ -60,6 +60,10 @@ void Start()
 	hud.addVertex(-5.f, -5.f);
 
 	cameraPosY = cameraY;
+
+	navio.CriaBarco(1.5, 4.5);
+	
+	coptero.Criahelecoptero(1.5, 4.5);
 }
 
 void Render()
@@ -139,6 +143,7 @@ void Update()
 
 	//Movimentacao barquinho
 	navio.detectar(cenarioBase, velocidadeMovimento);
+
 	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
 
@@ -152,15 +157,17 @@ void Update()
 	}
 	else
 		player.colisaoDetectada = false;
-
-	player.collider.detectarColisao(coptero.Colider);
-	player.collider.detectarColisao(navio.colisor);
+		
+	player.collider.detectarColisaoWithPositions(coptero.extremoRight, coptero.extremoLeft, coptero.extremoUP, coptero.extremoDown);
+	player.collider.detectarColisaoWithPositions(navio.extremoRight, navio.extremoLeft, navio.extremoUP, navio.extremoDown);
 	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);
 	player.collider.detectarColisao(cenarioBase.montanhaDireita);
 	if (player.colisaoDetectada)
 	{
 		player.ResetarJato(cameraPosY);
 	}
+
+
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
