@@ -3,6 +3,7 @@
 int tempoInicial = time(NULL), tempoFinal, contagemFrames = 0;
 
 GLfloat velocidadeMovimento = 0.015f;
+
 GLfloat cameraX, cameraY;
 GLfloat cameraPosY;
 
@@ -73,22 +74,24 @@ void Render()
 	//Save default matrix again
 	glPushMatrix();	
 
-	cenarioBase.DesenhaBloco();
-
-	hud.desenharElemento(0.5f, 0.5f, 0.5f, 1.0f);
-
-	EscreveVidas();
+	cenarioBase.DesenhaBloco();	
 	
 	tiro.DesenhaTiro();
 	navio.desenhabarco();
 	coptero.Desenhahelecoptyero();
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
+	player.collider.desenharElemento(1.f, 1.f, 1.f, 0.1f);
+
 
 	if (tiro.atirando)
 		tiro.MoveBala(0, 0.5f);
 
 	//DebugFPS
 	FrameCount();
+
+	hud.desenharElemento(0.5f, 0.5f, 0.5f, 1.0f);
+	EscreveVidas();
+
 	//Update screen
 	glutSwapBuffers();
 }
@@ -115,8 +118,21 @@ void Update()
 	
 	coptero.detectou(cenarioBase, velocidadeMovimento);
 
-	player.collider.detectarColisao(cenarioBase.montanhaDireita);
-	player.collider.detectarColisao(cenarioBase.montanhaEsquerda);		
+	if (player.collider.detectarColisao(cenarioBase.montanhaDireita))
+	{
+		player.colisaoDetectada = true;
+	}
+	else if (player.collider.detectarColisao(cenarioBase.montanhaEsquerda))
+	{
+		player.colisaoDetectada = true;
+	}
+	else
+		player.colisaoDetectada = false;
+
+	if (player.colisaoDetectada)
+	{
+		player.ResetarJato(cameraPosY);
+	}
 
 	//Save default matrix again with camera translation
 	glPushMatrix();
