@@ -80,7 +80,8 @@ void Render()
 	navio.desenhabarco();
 	coptero.Desenhahelecoptyero();
 	player.desenharElemento(1.f, .75f,.0f, 1.f);
-	player.collider.desenharElemento(1.f, 1.f, 1.f, 0.1f);
+	
+	//player.collider.desenharElemento(1.f, 1.f, 1.f, 0.1f);
 
 	//coptero.Colider.desenharElemento(0.75, 0.75, 0.75, 0);
 	//navio.colisor.desenharElemento(0.75, 0.75, 0.75, 0);
