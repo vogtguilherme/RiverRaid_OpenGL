@@ -115,6 +115,7 @@
     <ClInclude Include="bibliotecas.h" />
     <ClInclude Include="Bloco.h" />
     <ClInclude Include="Cena.h" />
+    <ClInclude Include="Jato.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="Combustivel.h" />
     <ClInclude Include="configuracao.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="Barco.cpp" />
     <ClCompile Include="Bloco.cpp" />
     <ClCompile Include="Cena.cpp" />
+    <ClCompile Include="Jato.cpp" />
     <ClCompile Include="Objeto.cpp" />
     <ClCompile Include="Combustivel.cpp" />
     <ClCompile Include="configuracao.cpp" />

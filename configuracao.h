@@ -8,6 +8,7 @@
 #include"Barco.h"
 #include "Bloco.h"
 #include "Player.h"
+#include "Jato.h"
 #include "Objeto.h"
 
 #ifndef CONFIGURACAO_H
@@ -28,5 +29,7 @@ void Render();
 void Update();
 
 void Input(unsigned char key, int x, int y);
+
+void FrameCount();
 
 #endif
